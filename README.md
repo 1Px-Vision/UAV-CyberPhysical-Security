@@ -8,6 +8,9 @@ Unmanned aerial vehicles have rapidly evolved from specialized platforms into es
 
 This repository supports the development of the book by organizing chapter materials, figures, references, simulation resources, and supporting documentation.
 
+
+![](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Cover_Book.jpg)
+
 ---
 
 ## Book Scope
