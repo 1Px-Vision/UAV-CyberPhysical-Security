@@ -81,10 +81,39 @@ The book covers a broad range of UAV security and mission-assurance topics, incl
 
 ## Drone Attack and Countermeasure Educational Simulator
 
+The Drone Attack and Countermeasure Educational Simulator allows users to study how UAV communication and navigation systems respond to different cyber–physical and RF-based threats. The simulator provides adjustable control parameters, multiple attack models, and defensive countermeasure options to support educational demonstrations, research analysis, and book-based training scenarios.
+
 ![](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Drone%20Attack%20and%20Countermeasure%20Educational%20Simulator.jpeg)
 
+### Control Parameters
 
+The simulator includes several control parameters that allow the user to modify the mission, RF environment, attack conditions, and navigation behavior. Users can adjust the carrier frequency, signal bandwidth, transmission power, receiver gain, antenna gain, drone distance, attacker distance, path-loss exponent, noise figure, and signal-to-noise ratio. These parameters affect the link budget, received signal strength, jamming-to-signal ratio, packet delivery rate, localization error, and safety state of the drone. Additional navigation controls allow users to simulate GPS drift, GPS spoofing bias, VIO/TDoA fusion, and failsafe behavior. By modifying these parameters, users can observe how the drone transitions from normal operation to degraded communication, navigation uncertainty, or safe-mode response.
 
+### Attack Types
+
+The simulator supports different educational RF and navigation attack models:
+
+* **Noise jamming:** Introduces broadband interference that reduces the communication signal quality and degrades packet delivery.
+
+* **Tone jamming:** Injects a narrowband interfering signal at a specific frequency, affecting selected channels or carrier frequencies.
+
+* **Sweep jamming:** Moves the interference across a frequency range, showing how a jammer can disturb multiple channels over time.
+
+* **Barrage jamming:** Covers a wide frequency band simultaneously, reducing the availability of several communication channels.
+
+* **Pulsed jamming:** Activates interference in short bursts, creating intermittent communication degradation.
+
+* **Continuous jamming:** Keeps the interference active at all times, causing persistent link degradation.
+
+* **Intermittent jamming:** Alternates between active and inactive periods, producing unstable communication and variable navigation performance.
+
+* **Reactive jamming:** Activates only when a valid signal is detected, representing an energy-efficient attack against drone communication links.
+
+* **Adaptive jamming:** Changes its behavior according to the communication state, making the attack more difficult to mitigate.
+
+* **Failsafe-triggering:** Attacks attempt to force the UAV into emergency behavior by degrading communication or navigation confidence.
+
+* **GPS spoofing:** Introduces false navigation information, causing the drone position estimate to drift away from the true trajectory.
 ---
 
 ## Intended Audience
