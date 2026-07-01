@@ -67,3 +67,11 @@ Python packages:
 dash
 plotly
 numpy
+```
+
+## Installing 
+```
+cd drone_attack_countermeasure_simulator_github_installer
+bash scripts/install_linux_mac.sh
+bash scripts/run_linux_mac.sh
+```
