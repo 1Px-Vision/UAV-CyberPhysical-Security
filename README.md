@@ -79,6 +79,12 @@ The book covers a broad range of UAV security and mission-assurance topics, incl
 └── README.md          # Project description
 ```
 
+## Drone Attack and Countermeasure Educational Simulator
+
+![](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Drone%20Attack%20and%20Countermeasure%20Educational%20Simulator.jpeg)
+
+
+
 ---
 
 ## Intended Audience
