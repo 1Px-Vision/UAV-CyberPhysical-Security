@@ -114,6 +114,11 @@ The simulator supports different educational RF and navigation attack models:
 * **Failsafe-triggering:** Attacks attempt to force the UAV into emergency behavior by degrading communication or navigation confidence.
 
 * **GPS spoofing:** Introduces false navigation information, causing the drone position estimate to drift away from the true trajectory.
+
+### Countermeasures
+
+The simulator also demonstrates several defensive strategies. Spectral filtering reduces narrowband interference such as tone jamming. Frequency hopping and channel diversity help the UAV avoid jammed channels. Power and antenna-gain adjustment improve the link budget when the communication link is weak. Sensor fusion using VIO, TDoA, RSSI, and inertial data helps maintain navigation when GPS is degraded or spoofed. Also includes GPS-spoofing detection, navigation consistency checks, and adaptive safe-mode logic. When the system detects high navigation error, weak signal conditions, or excessive jamming, the drone can reduce speed, switch to GPS-denied navigation, activate safe mode, or trigger a controlled failsafe response.
+
 ---
 
 ## Intended Audience
