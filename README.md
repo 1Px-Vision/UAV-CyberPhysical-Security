@@ -83,20 +83,6 @@ The book covers a broad range of UAV security and mission-assurance topics, incl
 
 The Drone Attack and Countermeasure Educational Simulator allows users to study how UAV communication and navigation systems respond to different cyber–physical and RF-based threats. The simulator provides adjustable control parameters, multiple attack models, and defensive countermeasure options to support educational demonstrations, research analysis, and book-based training scenarios.
 
-### Single Drone mode
-* Runs one UAV only.
-* Uses the same RF, attack, countermeasure, GPS spoofing, and navigation scopes.
-* Swarm controls are ignored in this mode.
-
-![](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Simulator_Single.jpeg)
-
-### Swarm Drone mode
-* Runs B0 leader plus follower drones.
-* Each drone has updated RF budget, PDR, SNR, localization error, GPS innovation, safe-mode state, and mission status.
-* The selected drone controls the RF scopes and link-budget table.
-  
-![](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Simulator_Swarm.jpeg)
-
 ### Control Parameters
 
 The simulator includes several control parameters that allow the user to modify the mission, RF environment, attack conditions, and navigation behavior. Users can adjust the carrier frequency, signal bandwidth, transmission power, receiver gain, antenna gain, drone distance, attacker distance, path-loss exponent, noise figure, and signal-to-noise ratio. These parameters affect the link budget, received signal strength, jamming-to-signal ratio, packet delivery rate, localization error, and safety state of the drone. Additional navigation controls allow users to simulate GPS drift, GPS spoofing bias, VIO/TDoA fusion, and failsafe behavior. By modifying these parameters, users can observe how the drone transitions from normal operation to degraded communication, navigation uncertainty, or safe-mode response.
@@ -132,6 +118,20 @@ The simulator supports different educational RF and navigation attack models:
 The simulator also demonstrates several defensive strategies. Spectral filtering reduces narrowband interference such as tone jamming. Frequency hopping and channel diversity help the UAV avoid jammed channels. Power and antenna-gain adjustment improve the link budget when the communication link is weak. Sensor fusion using VIO, TDoA, RSSI, and inertial data helps maintain navigation when GPS is degraded or spoofed. Also includes GPS-spoofing detection, navigation consistency checks, and adaptive safe-mode logic. When the system detects high navigation error, weak signal conditions, or excessive jamming, the drone can reduce speed, switch to GPS-denied navigation, activate safe mode, or trigger a controlled failsafe response.
 
 ---
+
+### Single Drone mode
+* Runs one UAV only.
+* Uses the same RF, attack, countermeasure, GPS spoofing, and navigation scopes.
+* Swarm controls are ignored in this mode.
+
+![](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Simulator_Single.jpeg)
+
+### Swarm Drone mode
+* Runs B0 leader plus follower drones.
+* Each drone has updated RF budget, PDR, SNR, localization error, GPS innovation, safe-mode state, and mission status.
+* The selected drone controls the RF scopes and link-budget table.
+  
+![](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Simulator_Swarm.jpeg)
 
 ## Intended Audience
 
