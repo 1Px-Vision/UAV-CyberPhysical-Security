@@ -83,8 +83,18 @@ The book covers a broad range of UAV security and mission-assurance topics, incl
 
 The Drone Attack and Countermeasure Educational Simulator allows users to study how UAV communication and navigation systems respond to different cyber–physical and RF-based threats. The simulator provides adjustable control parameters, multiple attack models, and defensive countermeasure options to support educational demonstrations, research analysis, and book-based training scenarios.
 
+### Single Drone mode
+* Runs one UAV only.
+* Uses the same RF, attack, countermeasure, GPS spoofing, and navigation scopes.
+* Swarm controls are ignored in this mode.
+
 ![](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Simulator_Single.jpeg)
 
+### Swarm Drone mode
+* Runs B0 leader plus follower drones.
+* Each drone has updated RF budget, PDR, SNR, localization error, GPS innovation, safe-mode state, and mission status.
+* The selected drone controls the RF scopes and link-budget table.
+  
 ![](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Simulator_Swarm.jpeg)
 
 ### Control Parameters
