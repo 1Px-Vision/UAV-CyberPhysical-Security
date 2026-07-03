@@ -83,7 +83,9 @@ The book covers a broad range of UAV security and mission-assurance topics, incl
 
 The Drone Attack and Countermeasure Educational Simulator allows users to study how UAV communication and navigation systems respond to different cyber–physical and RF-based threats. The simulator provides adjustable control parameters, multiple attack models, and defensive countermeasure options to support educational demonstrations, research analysis, and book-based training scenarios.
 
-![](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Drone%20Attack%20and%20Countermeasure%20Educational%20Simulator.jpeg)
+![](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Simulator_Single.jpeg)
+
+![](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Simulator_Swarm.jpeg)
 
 ### Control Parameters
 
