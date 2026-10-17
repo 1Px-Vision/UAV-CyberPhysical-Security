@@ -1,12 +1,12 @@
-# Cyber–Physical Security and Mission Assurance for Unmanned Aerial Vehicles
+# Cyber–Physical Security and Mission Assurance for Unmanned Aerial Systems
 
 ## Overview
 
-**Cyber–Physical Security and Mission Assurance for Unmanned Aerial Vehicles** is a book project focused on the security, resilience, and operational assurance of UAV and UAS ecosystems. The book provides a comprehensive treatment of cyber–physical threats affecting unmanned aerial vehicles, including onboard software, embedded hardware, sensing systems, navigation, command-and-control links, wireless communication, payload interfaces, mission-planning tools, and operational environments.
+**Cyber–Physical Security and Mission Assurance for Unmanned Aerial Systems ** is a book project focused on the security, resilience, and operational assurance of UAV and UAS ecosystems. The book provides a comprehensive treatment of cyber–physical threats affecting unmanned aerial vehicles, including onboard software, embedded hardware, sensing systems, navigation, command-and-control links, wireless communication, payload interfaces, mission-planning tools, and operational environments.
 
 Unmanned aerial vehicles have rapidly evolved from specialized platforms into essential tools for civil, industrial, scientific, defense, and public-safety applications. They are now used in infrastructure inspection, emergency response, environmental monitoring, logistics, agriculture, border surveillance, communications support, search-and-rescue operations, and security missions. As UAVs become increasingly integrated into critical systems, they also become high-value targets for cyber–physical attacks.
 
-This repository supports the development of the book by organizing chapter materials, figures, references, simulation resources, and supporting documentation.
+This repository supports the book's development by organizing chapter materials, figures, references, simulation resources, and supporting documentation.
 
 
 ![](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Cover_Book.jpg)
