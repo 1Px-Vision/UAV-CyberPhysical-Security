@@ -26,7 +26,7 @@ Hint. Treat the JSON file as evidence of the configured simulation behavior. Tre
 Worked solution. Construct a timeline listing each configured interference interval alongside the corresponding observed communication effects. Identify whether output changes coincide with activation, deactivation, and recovery periods. Document any delay, persistence, or mismatch rather than assuming an immediate response.
 Compare the intermittent scenario with the continuous and random companion scenarios. Determine whether the recorded outputs follow their respective configured temporal patterns. Where random behavior is implemented, preserve the seed where available and repeat the observation to characterize variability.
 Figure 2 supports inspection of the recorded simulation outputs. Interpret differences only after checking that observation intervals, reference points, and remaining scenario parameters are comparable.
-![Figure 2: Simulated communication outputs](chapters/Chapter_2/figures/Practical_p2_ch_2.jpg)
+![Figure 2: Simulated communication outputs](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Chapter_2/Simulated%20communication%20outputs.jpg)
 AeroResilience output views used to inspect simulated communication effects during disturbance reconstruction. Interpretation requires alignment with the configured timing and the observation interval; RF symptoms alone do not establish malicious intent.
 Incident report and accountability. Organize the report into the following elements:
 Configuration evidence: JSON filename, revision, interference parameters, timer settings, and relevant model assumptions.
