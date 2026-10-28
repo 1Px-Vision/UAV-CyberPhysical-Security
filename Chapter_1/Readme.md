@@ -62,8 +62,7 @@ The resulting annotated architecture connects signal-generation software and RF 
 
 **Expected PDR is a model output.** Experimental PDR requires transmitted-packet and valid-received-packet counts over a defined observation interval:
 
-$$ \mathrm{PDR}_{\mathrm{measured}}
-=
+$$ \mathrm{PDR}_{\mathrm{measured}} =
 \frac{N_{\mathrm{valid,received}}}
      {N_{\mathrm{transmitted}}}
 \times 100\%.
