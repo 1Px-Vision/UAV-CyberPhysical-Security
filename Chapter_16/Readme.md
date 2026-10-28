@@ -78,7 +78,7 @@ Apply Eq. `eq:runtime_assurance_ai_uav` to the proposed command and record the 
 Normalize the observations entering Eq. `eq:em_risk_score` and calculate the risk index.
 Use Eq. `eq:em_degraded_mode_decision` as a candidate mode-selection policy, then verify the preconditions for the selected response.
 Specify HAPS link, navigation, controller, and operator evidence required before accepting a mode transition or recovery.
-Worked solution: runtime assurance. Suppose $\mathbf{u}{AI}=[4,0,0]^T$ m/s. The horizontal-speed requirement fails, so Eq. `eq:runtime_assurance_ai_uav` selects the fallback command. A zero-velocity request $\mathbf{u}{safe}=[0,0,0]^T$ is a possible emulator fallback only if the monitor’s model confirms that it is admissible for the current state. A numerical zero command does not itself prove hover, stability, or collision avoidance.
+Worked solution: runtime assurance. Suppose $\mathbf{u}{AI}=[4,0,0]^T$ m/s. The horizontal-speed requirement fails, so Eq. `eq:runtime_assurance_ai_uav` selects the fallback command. A zero-velocity request $\mathbf{u}{safe}=[0,0,0]^T$ is a possible emulator fallback only if the monitor’s model confirms that it is admissible for the current state. A numerical zero command does not, by itself, prove hover, stability, or collision avoidance.
 Retain the proposed command, violated constraint, relevant state uncertainty, fallback command, execution acknowledgment, and observed state. The equation describes an assurance architecture; it does not certify the safe set or verify a controller without supporting evidence. Stale relay telemetry may make the state estimate too uncertain to authorize either proposed action, requiring a separately defined local fallback or escalation.
 
 **Worked solution:** electromagnetic risk. Equation `eq:em_risk_score` combines quantities with different units. For this exercise, replace each raw input with a documented normalized severity in $[0,1]$, preserving the raw measurement separately. Let the normalized packet loss, interference, GNSS inconsistency, and link-delay severity be $(0.30,0.80,0.60,0.50)$ and choose nonnegative weights $(0.30,0.25,0.25,0.20)$. Then
@@ -103,7 +103,8 @@ Practical Exercise 16.3: Ecosystem Trust, Ethical Sensing, and Reproducible Assu
 Objective. Assess UTM identity and authorization, component provenance, privacy exposure, and benchmark performance without allowing a composite score to override mandatory obligations or evidence gaps.
 
 **Worked situation:** The same HAPS-supported emergency mission shares selected observation products with a response center. A UTM authorization record is uncertain, a replacement component has incomplete provenance, and imagery may contain identifiable bystanders. Determine what can proceed, what requires review, and what further evidence is necessary. Use Eqs. `eq:utm_trust_score`, `eq:component_trust_score`, `eq:privacy_risk_score`, and `eq:uav_security_benchmark_objective`.
-Worked solution: UTM trust. For Eq. `eq:utm_trust_score`, use weights $(\lambda_1,\ldots,\lambda_5)=(0.25,0.25,0.20,0.20,0.10)$ and inputs $(I,A,H,C,V)=(1,0,0.90,0.95,0.10)$. Then
+Worked solution: UTM trust. For Eq. `eq:utm_trust_score`, use weights 
+$(\lambda_1,\ldots,\lambda_5)=(0.25,0.25,0.20,0.20,0.10)$ and inputs $(I,A,H,C,V)=(1,0,0.90,0.95,0.10)$. Then
 
 $$
 \Gamma_i=0.25+0+0.18+0.19-0.01=0.61.
