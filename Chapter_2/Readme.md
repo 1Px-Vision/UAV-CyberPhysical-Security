@@ -37,13 +37,13 @@ Responsibilities: Identify who configured the scenario, collected the outputs, r
 The completed report separates configured interference behavior from observed communication effects. It does not infer malicious intent from RF symptoms alone. Reproducing a disturbance in simulation demonstrates a possible explanation under stated assumptions; it does not establish the cause of a real-world incident.
 Implementation checklist:
 
-- [] Preserve the original JSON configurations and software revision.
-- [] Record observation intervals and align timestamps or simulation frame indices.
-- [] Compare configured timing with observed degradation and recovery.
-- [] Document differences among intermittent, continuous, and random scenarios.
-- [] Compare alternative explanations and identify missing evidence.
-- [] Identify the evidence supporting each conclusion.
-- [] Record reviewer responsibilities and corrective-action ownership.
+- [ ] Preserve the original JSON configurations and software revision.
+- [ ] Record observation intervals and align timestamps or simulation frame indices.
+- [ ] Compare configured timing with observed degradation and recovery.
+- [ ] Document differences among intermittent, continuous, and random scenarios.
+- [ ] Compare alternative explanations and identify missing evidence.
+- [ ] Identify the evidence supporting each conclusion.
+- [ ] Record reviewer responsibilities and corrective-action ownership.
   
 **Expected deliverable:**  An incident report containing an annotated disturbance timeline, a comparison of the three scenarios, supporting observations, alternative explanations, and clearly assigned review responsibilities.
 Practical Example: Wi-Fi C2 Capture and Simulated Command Injection
@@ -56,7 +56,7 @@ Here, “capture” means recording network observations; simulated control take
 
 **Laboratory elements**
 An owned Wi-Fi access point and two test hosts, or equivalent isolated virtual hosts, with a documented topology and test address list.
-A ground-control emulator producing synthetic C2 messages and a drone emulator exposing a documented laboratory command interface.
+A ground-control emulator that produces synthetic C2 messages and a drone emulator that exposes a documented laboratory command interface.
 A packet analyzer such as Wireshark and capture capability on an authorized endpoint or test-network observation point.
 A test client producing only the exercise messages, together with application logs and a shared or documented time reference.
 Endpoint capture is sufficient for the application-level exercise. A capture taken after endpoint decryption is not evidence that an outside observer could recover protected Wi-Fi traffic. If you collect radio-layer observations separately, document the adapter, capture mode, available metadata, and visibility limits. This exercise includes no credential-recovery step.
@@ -74,15 +74,16 @@ In the permissive emulator, submit one synthetic command from the test client an
 Repeat with the validated profile using an unauthorized test message, an exact duplicate of a previously accepted synthetic message, an expired message, and a valid authorized message. Document the expected outcome for each case before execution.
 Correlate packet observations, receiver decisions, acknowledgments, and emulator state logs. Compare profiles under equivalent test conditions.
 Illustrative sniffer observation. A baseline capture might show periodic control messages from the ground-control host to the emulator and telemetry in the reverse direction. A later test message may reach the same emulator interface from the laboratory test client. That observation establishes only that traffic was visible at the capture point. Establishing command acceptance requires receiver evidence; establishing execution requires a corresponding emulator state event.
+
 For example, retain the following event chain with actual run timestamps:
--[] The test client generates synthetic command `TEST-001`.
--[] The capture records the associated test flow at the documented observation point.
--[] The receiver log records the command identifier and an accept-or-reject decision with a reason.
--[] The emulator records a virtual state transition only when the command executes.
+- [ ] The test client generates synthetic command `TEST-001`.
+- [ ] The capture records the associated test flow at the documented observation point.
+- [ ] The receiver log records the command identifier and an accept-or-reject decision with a reason.
+- [ ] The emulator records a virtual state transition only when the command executes.
 
 An acknowledgment alone does not prove the intended state change. If packet contents cannot be mapped to a command identifier, explain the limits of correlation rather than claiming a definitive association.
 Hint. Separate four questions: was traffic observed, did it reach the receiver, did validation accept it, and did the emulator execute it? Missing telemetry can reflect capture loss, delay, application failure, or logging limitations. Do not automatically classify it as hostile activity or a successful takeover.
-Worked solution. Produce a case-by-case comparison of the permissive and validated emulator profiles. The permissive profile illustrates the consequence of an intentionally absent validation function; it does not establish a vulnerability in a commercial aircraft. The validated profile must be assessed against its actual implementation and logs rather than assumed to reject every test message.
+Worked solution. Produce a case-by-case comparison of the permissive and validated emulator profiles. The permissive profile illustrates the consequence of an intentionally absent validation function; it does not establish a vulnerability in a commercial aircraft. Assess the validated profile against its actual implementation and logs, rather than assuming it rejects every test message.
 For each test, record the message identity, session, sequence information, generation and receipt times where available, capture reference, receiver decision, rejection reason, acknowledgment, and virtual state outcome. Mark absent or ambiguous evidence as unresolved. Preserve the raw capture and original logs, and document any extraction, redaction, timestamp conversion, or packet reassembly applied during analysis.
 When testing replay handling, confirm the emulator accepted the original authorized message before replaying its duplicate. Evaluate whether the duplicate is rejected, and ensure the rejection is due to receiver validation rather than packet loss. A stale message test must have a documented freshness rule and time basis. Record counter resets and session changes because duplicate interpretation depends on them.
 Incident reconstruction and accountability. Construct a timeline separating the test-client action, network observation, receiver validation, and emulator state change. Identify who authorized the test, operated the capture, configured each profile, reviewed the evidence, and approved corrective actions. Report the demonstrated security failure at the emulator’s application layer and avoid generalizing it to unrelated Wi-Fi equipment or real aircraft.
@@ -91,11 +92,11 @@ Evaluation metrics. Report valid-message acceptance, unauthorized-message accept
 
 Implementation checklist:
 
--[] Use owned test equipment and an isolated emulator-based command interface.
--[] Record capture location, visibility limits, filters, and timing references.
--[] Distinguish packet observation, receiver acceptance, and simulated execution.
--[] Preserve original captures, message identifiers, and receiver/state logs.
--[] Evaluate authentication, authorization, freshness, and state validation separately.
--[] Record losses, ambiguous correlations, and unsupported conclusions.
--[] Assign review responsibilities and retain corrective-action evidence.
--[] Expected deliverable. An annotated packet-capture report and incident timeline comparing permissive and validated drone-emulator behavior, supported by receiver decisions and virtual-state records. Include demonstrated limits, measured validation costs, and recommendations tied to the observed failure mechanisms.
+- [ ] Use owned test equipment and an isolated emulator-based command interface.
+- [ ] Record capture location, visibility limits, filters, and timing references.
+- [ ] Distinguish packet observation, receiver acceptance, and simulated execution.
+- [ ] Preserve original captures, message identifiers, and receiver/state logs.
+- [ ] Evaluate authentication, authorization, freshness, and state validation separately.
+- [ ] Record losses, ambiguous correlations, and unsupported conclusions.
+- [ ] Assign review responsibilities and retain corrective-action evidence.
+- [ ] Expected deliverable. An annotated packet-capture report and incident timeline comparing permissive and validated drone-emulator behavior, supported by receiver decisions and virtual-state records. Include demonstrated limits, measured validation costs, and recommendations tied to the observed failure mechanisms.
