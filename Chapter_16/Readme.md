@@ -24,7 +24,7 @@ Implement or identify the additional defense explicitly and verify that it chang
 Run matched baseline and defended trials, repeat across independent realizations where supported, and retain the full run inventory.
 Analyze variability, resource use, failure conditions, and accountability records; distinguish supported findings from unsupported assumptions.
 Illustrated exposure structure. Figure 1 shows the scheduled branches and changing disturbance combinations.
-![Figure 1: Proposed exposure structure](chapters/Chapter_17/figures/Practical_p1_ch_16.jpg)
+![Figure 1: Proposed exposure structure](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Chapter_16/Proposed%20exposure%20structure.jpg)
 Proposed AeroResilience exposure view for overlapping noise, spot, and tone branches and complementary pulsed or random conditions. Actual receiver exposure requires verification of waveform activity, routing, and combination semantics.
 Hint. If the receiver or selector follows one branch rather than summing active branches, the experiment concerns selection among exposures rather than simultaneous additive interference. Record that behavior and revise the hypothesis or implement the required combination function. Do not describe an unsupported summed-waveform model as an observed property of the JSON.
 Worked solution: research question and hypothesis. A suitable question is: “Does the specified defense improve the declared communication-performance outcome across verified overlapping, pulsed, and random exposures while satisfying the processing deadline and memory budget?” Specify the defense and its mechanism; a scenario labeled resilience does not define it.
