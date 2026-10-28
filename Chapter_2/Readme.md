@@ -20,7 +20,7 @@ Reconstruct the disturbance timeline by comparing configured activation periods 
 Repeat the analysis using `Friendly_Spot_Continuous_2400MHz.json` and `Friendly_Spot_Random_2400MHz.json`. Hold other parameters fixed where possible and document any differences between the configurations.
 Prepare an incident report separating configuration evidence, observed communication effects, alternative explanations, and conclusions.
 Illustrated scenario. Figure 1 provides the scenario view used to examine the relationship between block configuration and communication outputs.
-![Figure 1: Communication-disturbance scenario](chapters/Chapter_2/figures/Practical_p1_ch_2.jpg)
+![Figure 1: Communication-disturbance scenario](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Chapter_2/Communication-disturbance%20scenario.jpg)
 AeroResilience scenario view supporting reconstruction of a simulated communication disturbance. Compare the configured interference and timing parameters with available communication outputs over a defined observation interval.
 Hint. Treat the JSON file as evidence of the configured simulation behavior. Treat recorded scope and metrics outputs as evidence of the simulated communication response. A reduction in PDR or SINR alone does not establish an interference mechanism or malicious intent in a real incident.
 Worked solution. Construct a timeline listing each configured interference interval alongside the corresponding observed communication effects. Identify whether output changes coincide with activation, deactivation, and recovery periods. Document any delay, persistence, or mismatch rather than assuming an immediate response.
