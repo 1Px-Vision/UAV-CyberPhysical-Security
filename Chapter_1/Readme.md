@@ -32,7 +32,7 @@ The supporting JSON scenario is provided through the book's repository:
 
 ### Figure 1: Connected block architecture
 
-![AeroResilience connected block architecture and live link-budget display](chapters/Chapter_1/figures/Practical_p1_ch_1.jpg)
+![AeroResilience connected block architecture and live link-budget display](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Chapter_1/figure-1-connected-block-architecture.jpg)
 
 *AeroResilience connected block architecture and live link-budget display for a simulated 2.4 GHz communication-resilience exercise. The processing chain includes the spot-interference model, timer, RF-link parameters, antenna gains, channel effects, and output power scope. The floating metrics panel and live link-budget display show different frame indices and therefore represent separate simulation states.*
 
