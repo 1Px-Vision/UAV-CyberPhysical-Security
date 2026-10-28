@@ -62,8 +62,7 @@ The resulting annotated architecture connects signal-generation software and RF 
 
 **Expected PDR is a model output.** Experimental PDR requires transmitted-packet and valid-received-packet counts over a defined observation interval:
 
-$$
-\mathrm{PDR}_{\mathrm{measured}}
+$$ \mathrm{PDR}_{\mathrm{measured}}
 =
 \frac{N_{\mathrm{valid,received}}}
      {N_{\mathrm{transmitted}}}
@@ -78,7 +77,7 @@ In [Figure 1](#figure-1-connected-block-architecture), the floating metrics pane
 
 ### Figure 2: Waveform and spectrum scopes
 
-![AeroResilience simulated waveform and spectrum scopes](chapters/Chapter_1/figures/Practical_p2_ch_1.jpg)
+![AeroResilience simulated waveform and spectrum scopes](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Chapter_1/figure-2-waveform-and-spectrum-scopes.jpg)
 
 *AeroResilience simulated waveform and spectrum scopes. The upper view compares the legitimate link signal, simulated interference component, raw received signal, and modeled response after countermeasure processing. The lower view compares their spectral representations. Waveform amplitudes are normalized and spectral magnitudes are relative; these plots do not constitute calibrated RF measurements.*
 
