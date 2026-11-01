@@ -20,7 +20,7 @@ Inspect the recovery scenario and compare performance before, during, and after 
 Propose monitoring, selection, switching confirmation, stable recovery, and fallback functions. Identify which functions are absent from the supplied workflows.
 Specify resource requirements, shared dependencies, additional instrumentation, and separate HAPS modeling tasks. Report the architecture as conceptual until implementation and verification are complete.
 Illustrated path comparison. The path-comparison image below shows the simplified evaluated branches and their observation points.
-![HAPS communication teaching scenario](chapters/Chapter_14/figures/Practical_p1_ch_14.jpg)
+![HAPS communication teaching scenario](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Chapter_14/HAPS%20communication%20teaching%20scenario.jpg)
 Proposed configuration view for comparing unequal communication paths in a terrestrial-style 2.4 GHz simulation. Separate branch records support the conceptual selection exercise but do not establish HAPS link performance.
 Hint. Two logical branches may share one receiver, power source, clock, antenna, gateway, or propagation obstruction. Such branches are not necessarily independent redundant paths. Likewise, selecting a displayed branch does not prove that communication traffic was switched or that the destination remained reachable.
 Worked solution: conceptual architecture. Define five explicit functions:
