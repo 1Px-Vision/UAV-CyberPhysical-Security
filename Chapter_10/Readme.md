@@ -100,9 +100,10 @@ Worked solution: failure-rate estimates. For $r$ observed first failures over to
 $$
 \widehat{\lambda}=\frac{r}{T}.
 $$
-For the reference and pooled new batch,
-$$
 
+For the reference and pooled new batch,
+
+$$
 \widehat{\lambda}{\mathrm{ref}}=\frac{5}{20{,}000}
 =0.00025,\mathrm{h}^{-1},
 \qquad
