@@ -6,7 +6,8 @@ A monitoring assessment requires reference observations that distinguish intende
 
 ### Practical Exercise 6.1: Detector Robustness Across Interference Conditions
 **Objective:** Construct a labeled monitoring exercise, evaluate missed detections, false alarms, and detection delay by interference condition, and measure computational costs on the detector’s execution platform.
-Worked situation. Load `Detector_Robustness_2400MHz.json`. The supplied scenario description identifies noise, tone, sweep, random, and combined interference conditions. Inspect the timer blocks to identify intended exposure windows, then compare those windows with the active interference actually produced by the waveform models. Confirm the model definitions and routing before assigning reference labels. The JSON scenario does not establish detector performance on its own; a separately implemented detector must consume explicitly identified observations.
+
+**Worked situation:** Load `Detector_Robustness_2400MHz.json`. The supplied scenario description identifies noise, tone, sweep, random, and combined interference conditions. Inspect the timer blocks to identify intended exposure windows, then compare those windows with the active interference actually produced by the waveform models. Confirm the model definitions and routing before assigning reference labels. The JSON scenario does not establish detector performance on its own; a separately implemented detector must consume explicitly identified observations.
 
 Supporting scenarios are provided through the book’s repository:
 - UAV CyberPhysical Security repository
