@@ -73,7 +73,7 @@ Worked situation. Load `GNSS_Spoofing_Carrier_1575_42MHz.json` into the compatib
 * G6: mitigated navigation observation scope.
 * G7: raw spoofed-position scope, branching directly from G3.
 Use the supplied screenshot as the illustrated observation. Verify the loaded parameters and export numerical records before reporting precise results.
-![AeroResilience detection and navigation monitoring](chapters/Chapter_6/figures/GNSS_Spoofing_ch_6_2.jpg)
+![AeroResilience detection and navigation monitoring](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Chapter_6/GNSS_Spoofing.jpg)
 AeroResilience synthetic GNSS-spoofing workflow and position-error comparison. The raw observation branch and GPS-like error traces approach approximately 40–41 m, while fusion-gated error remains near 2 m during the sustained bias interval. The horizontal axis is simulation frame index, not elapsed seconds. Overlapping traces can obscure individual curves.
 
 **Practical procedure**
