@@ -16,7 +16,7 @@ Preserve the original JSON configuration and record the software revision, expos
 Run the scenario over a defined interval and retain synchronized observations from both branches. Record original packet-generation events and replay events where the implementation exposes them.
 Assess RF availability and packet freshness separately. Identify which replay-rejection claims require an additional receiver validator and cannot be concluded from the JSON workflow alone.
 Illustrated workflow. The workflow image below provides the configuration view used to inspect the RF and packet-processing branches.
-![AeroResilience RF and packet-replay assessment](chapters/Chapter_5/figures/Practical_p1_ch_5.jpg)
+![AeroResilience RF and packet-replay assessment](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Chapter_5/AeroResilience%20RF%20and%20packet-replay%20assessment.jpg)
 AeroResilience workflow view for simultaneous modeled RF disturbance and synthetic packet replay. The RF branch represents pulsed and tone interference, while the separate packet branch supports inspection of the packet source and replay configuration.
 
 **Hint:** A packet may be received successfully yet be stale or duplicated. Conversely, RF impairment may cause a legitimate fresh packet to be lost. A communication-quality metric alone cannot distinguish these cases. A five-frame age is not a physical time delay until the frame duration and timing convention are established.
