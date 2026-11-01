@@ -59,5 +59,5 @@ Implementation checklist:
 - [ ] Distinguish expected behavior from observed results.
 - [ ] Measure computational performance during execution rather than inferring it from JSON structure.
 
-Expected deliverable. A benchmark manifest covering all 18 supplied JSON files, accompanied by repeatable execution instructions, compatibility records, preserved configurations, run evidence, and measured computational performance where available. Explicitly identify unsupported and externally configured functions.
+**Expected deliverable:** A benchmark manifest covering all 18 supplied JSON files, accompanied by repeatable execution instructions, compatibility records, preserved configurations, run evidence, and measured computational performance where available. Explicitly identify unsupported and externally configured functions.
 
