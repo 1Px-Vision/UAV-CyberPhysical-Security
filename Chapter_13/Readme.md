@@ -17,8 +17,9 @@ Trace synthetic packet generation, replay processing, and the combined output. D
 - [ ] Identify repeated, delayed, out-of-order, and incomplete observations using declared comparison and timing rules.
 - [ ] Produce a provenance ledger and a documented acceptance, flagging, or deferral decision for each observation.
 
-* **Hint:** Arrival time and acquisition time are different. A newly received record may describe an old observation. A repeated sequence identifier may indicate duplication, but interpretation also requires the source, session, counter-wrap behavior, and transformation history. A digest can identify identical bytes without proving source authenticity or acquisition time.
+>Hint: Arrival time and acquisition time are different. A newly received record may describe an old observation. A repeated sequence identifier may indicate duplication, but interpretation also requires the source, session, counter-wrap behavior, and transformation history. A digest can identify identical bytes without proving source authenticity or acquisition time.
 Worked solution: provenance-checking procedure.
+
 * **Preserve the original:** Retain the unmodified input and assign a stable evidence identifier. Record its source and collection context, storage reference, and content digest where used. Perform analysis on linked working records.
 Establish identity. Build an observation key from the source, session or run, and sequence identifier where available. Document whether these fields are merely reported or independently verified.
 * **Assess freshness:** Compare acquisition and receipt or evaluation time only when they share a documented time basis or have a justified clock mapping. Apply a mission-defined freshness limit and retain timing uncertainty. With frame-based simulation, report age in frames unless a validated time conversion exists.
