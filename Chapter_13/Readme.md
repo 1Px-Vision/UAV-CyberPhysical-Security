@@ -1,6 +1,4 @@
 # UAS Intelligence, Surveillance, and Reconnaissance Security
-
-Secure ISR Processing Architectures and Evidence Traceability
 ISR security covers everything from collecting data with sensors to processing, sending, storing, analyzing, and sharing that data. At each step, track where and how the data was collected, including the time, platform status, sensor settings, and any later processing. Limit access based on the information’s sensitivity and each user’s responsibilities. When choosing hardware and software, consider factors like data rates, processing deadlines, storage space, communication options, and energy use. Check how security measures might affect data availability and usefulness for analysis. To keep data traceable, record any changes, who accessed the data, and updates to processing models or software.
 
 ## Practical Exercises: Evidence Provenance and ISR Mission Resilience
@@ -8,7 +6,7 @@ Intelligence, surveillance, and reconnaissance (ISR) workflows require traceable
 
 ### Practical Exercise 13.1: Freshness, Duplication, and Observation Provenance
 **Objective:** Develop a provenance-checking procedure that distinguishes fresh observations from delayed or duplicated information, preserves the original records, and documents processing history.
-Worked situation. Use `Jamming_Injected_Replay_Attack_2400MHz.json` as an analogy for information handling during communication disruption. Inspect the synthetic packet source, replay settings, and combined evaluation output. Verify which packet identifiers, source references, frame indices, or timestamps the implementation actually exposes. Record missing provenance fields rather than inventing them.
+**Worked situation:** Use `Jamming_Injected_Replay_Attack_2400MHz.json` as an analogy for information handling during communication disruption. Inspect the synthetic packet source, replay settings, and combined evaluation output. Verify which packet identifiers, source references, frame indices, or timestamps the implementation actually exposes. Record missing provenance fields rather than inventing them.
 The supporting scenario is provided through the book’s repository:
 - [ ] UAV CyberPhysical Security repository. 
 - [ ] Practical task.
@@ -40,7 +38,9 @@ Implementation checklist:
 
 ### Practical Exercise 13.2: Mission-Resilience Matrix for ISR UAV Operations
 **Objective:** Construct a mission-resilience matrix connecting disturbances, essential ISR functions, acceptance criteria, evidence, recovery actions, and responsible decision-makers.
+
 **Worked situation:** An ISR UAV must preserve an agreed level of useful observation and evidence integrity during communication degradation or component failure. Define the mission profile, essential services, acceptable degraded operation, and decision authority before assigning thresholds. The matrix below is a teaching template, not a certification checklist or evidence that any particular platform satisfies the requirements.
+
 **Practical task:** Complete one assessment record for each matrix row. Assign a requirement identifier, justified threshold, observation interval, owner, evidence reference, observed outcome, and residual risk. Test the supported functions using simulation or recorded observations and mark unsupported functions as not evaluated.
 Mission-resilience matrix.
 * **Function / disturbance	Assessment, evidence, and response C2 availability / RF disruption:**	Define valid-command delivery and maximum tolerated interruption. Use packet records and controller telemetry; assign the operator to confirm the predefined degraded-operation response.
