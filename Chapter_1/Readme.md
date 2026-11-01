@@ -36,8 +36,7 @@ The supporting JSON scenario is provided through the book's repository:
 
 *AeroResilience connected block architecture and live link-budget display for a simulated 2.4 GHz communication-resilience exercise. The processing chain includes the spot-interference model, timer, RF-link parameters, antenna gains, channel effects, and output power scope. The floating metrics panel and live link-budget display show different frame indices and therefore represent separate simulation states.*
 
-### Hint
-
+> Hint
 For each block, ask whether it handles configuration, scheduling, signal generation, propagation modeling, reception, or measurement. Identify where a simulated quantity would require calibration before comparison with a physical measurement.
 
 ### Worked situation and solution
