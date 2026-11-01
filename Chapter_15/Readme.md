@@ -21,7 +21,8 @@ An organization's statement that its AI-enabled UAS security system is “ISO co
 
 **Issue a bounded conclusion:** State what the evidence supports, what it does not establish, and what further verification is required.
 
-**Hint:** Keep the assessment subject explicit. Evidence addressing an organizational management process must not automatically be extended to every product function, deployment, or AI-model version. A technical test result supports only the properties, configuration, conditions, and acceptance criteria actually evaluated. Read the scope and assessment conclusion before interpreting a logo, certificate title, or marketing statement.
+>Hint: Keep the assessment subject explicit. Evidence addressing an organizational management process must not automatically be extended to every product function, deployment, or AI-model version. A technical test result supports only the properties, configuration, conditions, and acceptance criteria actually evaluated. Read the scope and assessment conclusion before interpreting a logo, certificate title, or marketing statement.
+
 Worked Solution: 
 1. Clarify the Claim and Its Supporting Records Start by noting that the unqualified statement is insufficiently specific for a conformity conclusion.
 2. Request: The exact standard designation and edition.
