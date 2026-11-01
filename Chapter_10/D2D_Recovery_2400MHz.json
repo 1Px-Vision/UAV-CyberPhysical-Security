@@ -1,0 +1,163 @@
+{
+  "schema": "connected-jamming-v5",
+  "nodes": [
+    {
+      "origin_id": "B1",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 47,
+        "y": 96
+      },
+      "id": "B1",
+      "name": "Noise interference source",
+      "kind": "waveform",
+      "inputs": [],
+      "params": {
+        "strategy": "noise",
+        "strength": 1,
+        "duty": 1,
+        "center": 20,
+        "span": 80
+      }
+    },
+    {
+      "origin_id": "B2",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 285,
+        "y": 95
+      },
+      "id": "B2",
+      "name": "Exposure 20-59",
+      "kind": "timer",
+      "inputs": [
+        "B1"
+      ],
+      "params": {
+        "start": 20,
+        "duration": 40,
+        "period": 90
+      }
+    },
+    {
+      "origin_id": "B3",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 533,
+        "y": 66
+      },
+      "id": "B3",
+      "name": "2400 MHz interference -65 dBm",
+      "kind": "rf_link",
+      "inputs": [
+        "B2"
+      ],
+      "params": {
+        "carrier_mhz": 2400,
+        "signal_bandwidth_khz": 125,
+        "power_dbm": -65,
+        "snr_db": 40
+      }
+    },
+    {
+      "origin_id": "B4",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 823,
+        "y": 92
+      },
+      "id": "B4",
+      "name": "D2D recovery",
+      "kind": "link_evaluation",
+      "inputs": [
+        "B3"
+      ],
+      "params": {
+        "carrier_mhz": 2400,
+        "bandwidth_khz": 125,
+        "desired_rx_dbm": -70,
+        "noise_floor_dbm": -100,
+        "pdr_midpoint_db": 3,
+        "pdr_slope_db": 2
+      }
+    },
+    {
+      "origin_id": "B5",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 1590,
+        "y": 93
+      },
+      "id": "B5",
+      "name": "Selected RF output",
+      "kind": "power_scope",
+      "inputs": [
+        "B7"
+      ],
+      "params": {}
+    },
+    {
+      "origin_id": "B6",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 1540,
+        "y": 340
+      },
+      "id": "B6",
+      "name": "Scenario metrics",
+      "kind": "metrics_scope",
+      "inputs": [],
+      "params": {}
+    },
+    {
+      "origin_id": "n_18982d",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 1336,
+        "y": 93
+      },
+      "id": "B7",
+      "name": "Channel effects",
+      "kind": "channel",
+      "inputs": [
+        "B8"
+      ],
+      "params": {
+        "attenuation_db": 6,
+        "fading_depth_db": 3,
+        "fading_period_frames": 30,
+        "added_noise_dbm": -110
+      }
+    },
+    {
+      "origin_id": "n_0c6b75",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 1093,
+        "y": 93
+      },
+      "id": "B8",
+      "name": "Antenna gains",
+      "kind": "antenna",
+      "inputs": [
+        "B4"
+      ],
+      "params": {
+        "tx_type": "yagi",
+        "rx_type": "dipole",
+        "tx_gain_dbi": 12.15,
+        "rx_gain_dbi": 2.15,
+        "polarization_loss_db": 0
+      }
+    }
+  ],
+  "output": "B5"
+}
