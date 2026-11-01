@@ -6,6 +6,7 @@ Intelligence, surveillance, and reconnaissance (ISR) workflows require traceable
 
 ### Practical Exercise 13.1: Freshness, Duplication, and Observation Provenance
 **Objective:** Develop a provenance-checking procedure that distinguishes fresh observations from delayed or duplicated information, preserves the original records, and documents processing history.
+
 **Worked situation:** Use `Jamming_Injected_Replay_Attack_2400MHz.json` as an analogy for information handling during communication disruption. Inspect the synthetic packet source, replay settings, and combined evaluation output. Verify which packet identifiers, source references, frame indices, or timestamps the implementation actually exposes. Record missing provenance fields rather than inventing them.
 The supporting scenario is provided through the book’s repository:
 - [ ] UAV CyberPhysical Security repository. 
