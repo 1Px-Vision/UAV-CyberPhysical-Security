@@ -32,15 +32,16 @@ $$
 
 This value describes the stated configuration before any additional model effects; it must not replace the simulator’s reported SNR without checking the model definitions. Similarly, where $J_{\mathrm{RX},i}$ is the received interference power in dBm at the same reference point as the desired signal,
 
-$$ (J/S)i,[\mathrm{dB}]
-= J{\mathrm{RX},i},[\mathrm{dBm}]
-- S_{\mathrm{RX}},[\mathrm{dBm}].
+$$
+(J/S)_i\,[\mathrm{dB}]
+= J_{\mathrm{RX},i}\,[\mathrm{dBm}]
+- S_{\mathrm{RX}}\,[\mathrm{dBm}].
 $$
 
 Compare each interval’s reported performance with the predefined acceptance criterion. A result is inconclusive when the required output, timing alignment, or configuration evidence is missing. Do not substitute assumed values for missing observations. If performance is rejected, document the requirement violation and the proposed corrective action; if accepted, document the remaining limitations and residual risk.
 The output image below provides the output view used to associate reported performance with exposure intervals.
 ![AeroResilience communication-availability assessment](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Chapter_3/AeroResilience%20communication-availability%20assessment_Signals.jpg)
-AeroResilience output view supporting comparison of reported link performance with predefined acceptance criteria. Each result is associated with an exposure interval, its test configuration, and retained simulation evidence.
+AeroResilience output view supporting comparison of reported link performance with predefined acceptance criteria. Each result includes an exposure interval, its test configuration, and retained simulation evidence.
 Assessment matrix. Use one row per exposure interval in the final assessment matrix. Include the following fields; the table below defines the required fields.
 Matrix field	Required entry for each interval $E_i$
 Threat	Modeled interference exposure and affected communication function.
