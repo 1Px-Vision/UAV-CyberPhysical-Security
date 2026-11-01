@@ -1,0 +1,248 @@
+{
+  "schema": "connected-jamming-v5",
+  "nodes": [
+    {
+      "id": "B1",
+      "origin_id": "B1",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 20,
+        "y": 30
+      },
+      "name": "Injected pulsed noise",
+      "kind": "waveform",
+      "inputs": [],
+      "params": {
+        "strategy": "pulsed",
+        "strength": 0.7,
+        "duty": 0.4,
+        "center": 20,
+        "span": 80
+      }
+    },
+    {
+      "id": "B2",
+      "origin_id": "B2",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 20,
+        "y": 220
+      },
+      "name": "Injected tone",
+      "kind": "waveform",
+      "inputs": [],
+      "params": {
+        "strategy": "tone",
+        "strength": 0.3,
+        "duty": 1,
+        "center": 20,
+        "span": 5
+      }
+    },
+    {
+      "id": "B3",
+      "origin_id": "B3",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 260,
+        "y": 30
+      },
+      "name": "Combined jammer - 70% noise 30% tone",
+      "kind": "sum",
+      "inputs": [
+        "B1",
+        "B2"
+      ],
+      "params": {
+        "gain": 1
+      }
+    },
+    {
+      "id": "B4",
+      "origin_id": "B4",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 500,
+        "y": 30
+      },
+      "name": "Jamming exposure frames 10-69",
+      "kind": "timer",
+      "inputs": [
+        "B3"
+      ],
+      "params": {
+        "start": 10,
+        "duration": 60,
+        "period": 90
+      }
+    },
+    {
+      "id": "B5",
+      "origin_id": "B5",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 740,
+        "y": 30
+      },
+      "name": "2400 MHz received jammer reference",
+      "kind": "rf_link",
+      "inputs": [
+        "B4"
+      ],
+      "params": {
+        "carrier_mhz": 2400,
+        "signal_bandwidth_khz": 125,
+        "power_dbm": -65,
+        "snr_db": 40
+      }
+    },
+    {
+      "id": "B6",
+      "origin_id": "B6",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 980,
+        "y": 30
+      },
+      "name": "Active branch noise reference",
+      "kind": "noise_floor",
+      "inputs": [
+        "B5"
+      ],
+      "params": {
+        "floor_dbm": -100
+      }
+    },
+    {
+      "id": "B7",
+      "origin_id": "B7",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 1220,
+        "y": 30
+      },
+      "name": "RF jamming scope",
+      "kind": "power_scope",
+      "inputs": [
+        "B6"
+      ],
+      "params": {}
+    },
+    {
+      "id": "B8",
+      "origin_id": "B8",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 20,
+        "y": 430
+      },
+      "name": "Anchor 1 legitimate synthetic packets",
+      "kind": "packet_source",
+      "inputs": [],
+      "params": {
+        "packets_per_frame": 20,
+        "distance_m": 5
+      }
+    },
+    {
+      "id": "B9",
+      "origin_id": "B9",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 300,
+        "y": 430
+      },
+      "name": "Replay during jamming frames 10-69",
+      "kind": "replay_packets",
+      "inputs": [
+        "B8"
+      ],
+      "params": {
+        "age_frames": 5,
+        "probability": 0.3,
+        "copies": 1,
+        "start": 10,
+        "duration": 60,
+        "period": 90
+      }
+    },
+    {
+      "id": "B10",
+      "origin_id": "B10",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 580,
+        "y": 430
+      },
+      "name": "2400 MHz packet metadata",
+      "kind": "rf_link",
+      "inputs": [
+        "B9"
+      ],
+      "params": {
+        "carrier_mhz": 2400,
+        "signal_bandwidth_khz": 125,
+        "power_dbm": -70,
+        "snr_db": 30
+      }
+    },
+    {
+      "id": "B11",
+      "origin_id": "B11",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 860,
+        "y": 430
+      },
+      "name": "Packet observation - see replay panel",
+      "kind": "power_scope",
+      "inputs": [
+        "B10"
+      ],
+      "params": {}
+    },
+    {
+      "id": "B12",
+      "origin_id": "B12",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 1500,
+        "y": 30
+      },
+      "name": "Jamming + replay evaluation output",
+      "kind": "evaluation_output",
+      "inputs": [
+        "B7",
+        "B11"
+      ],
+      "params": {}
+    },
+    {
+      "id": "B13",
+      "origin_id": "B13",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 1500,
+        "y": 350
+      },
+      "name": "Combined RF metrics",
+      "kind": "metrics_scope",
+      "inputs": [],
+      "params": {}
+    }
+  ],
+  "output": "B12"
+}
