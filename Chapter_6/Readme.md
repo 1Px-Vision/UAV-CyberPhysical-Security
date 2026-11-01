@@ -6,13 +6,13 @@ A monitoring assessment requires reference observations that distinguish intende
 
 ### Practical Exercise 6.1: Detector Robustness Across Interference Conditions
 **Objective:** Construct a labeled monitoring exercise, evaluate missed detections, false alarms, and detection delay by interference condition, and measure computational costs on the detector’s execution platform.
-Worked situation. Load `Detector_Robustness_2400MHz(2).json`. The supplied scenario description identifies noise, tone, sweep, random, and combined interference conditions. Inspect the timer blocks to identify intended exposure windows, then compare those windows with the active interference actually produced by the waveform models. Confirm the model definitions and routing before assigning reference labels. The JSON scenario does not establish detector performance on its own; a separately implemented detector must consume explicitly identified observations.
+Worked situation. Load `Detector_Robustness_2400MHz.json`. The supplied scenario description identifies noise, tone, sweep, random, and combined interference conditions. Inspect the timer blocks to identify intended exposure windows, then compare those windows with the active interference actually produced by the waveform models. Confirm the model definitions and routing before assigning reference labels. The JSON scenario does not establish detector performance on its own; a separately implemented detector must consume explicitly identified observations.
 
 Supporting scenarios are provided through the book’s repository:
 - UAV CyberPhysical Security repository
 - Practical procedure.
 
-Preserve the JSON configuration and record the simulator revision, waveform-model settings, observation interval, sample or frame timing, and, where applicable, the random seed. Identify each timer window and its associated waveform branch. Verify which branches reach the evaluated receiver or detector input and how simultaneous branches are combined. Record actual model activity at the relevant observation point using waveform outputs, generator-state records, or equivalent instrumentation. Document the operational definition of activity and its temporal resolution. Construct reference labels independently of detector decisions. Preserve the scheduled-window indicator, actual-activity indicator, interference-condition label, and their provenance separately. Run a separately implemented detector on documented inputs. Record its algorithm version, preprocessing, window length, thresholds, decision cadence, and any persistence or debounce rule.
+Preserve the JSON configuration and record the simulator revision, waveform-model settings, observation interval, sample or frame timing, and, where applicable, the random seed. Identify each timer window and its associated waveform branch. Verify which branches reach the evaluated receiver or detector input and how the simulator combines simultaneous branches. Record actual model activity at the relevant observation point using waveform outputs, generator-state records, or equivalent instrumentation. Document the operational definition of activity and its temporal resolution. Construct reference labels independently of detector decisions. Preserve the scheduled-window indicator, actual-activity indicator, interference-condition label, and their provenance separately. Run a separately implemented detector on documented inputs. Record its algorithm version, preprocessing, window length, thresholds, decision cadence, and any persistence or debounce rule.
 Compare detector decisions with aligned reference labels and calculate missed detections, false alarms, and detection delay separately for each condition. Measure execution time, memory use, and processing capacity on the execution platform, and retain the labeled observations supporting the performance report.
 Illustrated monitoring configuration. The configuration image below provides the scenario view used to inspect exposure scheduling and waveform branches.
 ![AeroResilience detection and navigation monitoring](chapters/Chapter_6/figures/Practical_p1_ch_6.jpg)
@@ -20,8 +20,8 @@ AeroResilience configuration view for a detector-robustness monitoring exercise.
 
 > Hint. An enabled timer does not necessarily imply continuous interference at the detector input. Waveform duty cycles, random activation, frequency occupancy, and routing may change actual activity within a scheduled window. A sample-level zero crossing also does not imply an inactive waveform. Define activity over suitable frames or windows using generator evidence or an independent labeling rule, rather than reusing the detector threshold as ground truth.
 
-Worked solution: reference labels. For observation window $k$, retain a scheduled indicator $s_k$, an actual-activity reference $y_k$, and the detector decision $\widehat{y}_k$. Define $y_k=1$ when interference is active according to the documented reference rule at the chosen observation point and $y_k=0$ when it is absent. If activity cannot be established reliably, mark the window as unknown and report its exclusion from scored observations.
-Assign a separate condition label for noise, tone, sweep, random, or combined exposure. Verify whether “random” describes a waveform type, activation schedule, or another model parameter. For overlapping exposures, retain the constituent labels and define how combined-condition results are grouped to avoid unreported double counting. Record any disagreement between scheduled and actual activity as a reference-data finding, not automatically as a detector error.
+Worked solution: reference labels. For observation window $k$, retain a scheduled indicator $s_k$, an actual-activity reference $y_k$, and the detector decision $\widehat{y}_k$. Define $y_k=1$ when interference is active under the documented reference rule at the chosen observation point, and $y_k=0$ when it is absent. If you cannot reliably establish activity, mark the window as unknown and report its exclusion from scored observations.
+Assign a separate condition label for noise, tone, sweep, random, or combined exposure. Verify whether “random” describes a waveform type, activation schedule, or another model parameter. For overlapping exposures, retain the constituent labels and define how you group combined-condition results to avoid unreported double counting. Record any disagreement between scheduled and actual activity as a reference-data finding, not automatically as a detector error.
 Worked solution: detection metrics. Using the actual-activity reference and aligned detector decisions, count true positives (TP), false negatives (FN), false positives (FP), and true negatives (TN). For binary activity detection, report
 $$
 P_{\mathrm{miss}} = \frac{\mathrm{FN}}{\mathrm{TP}+\mathrm{FN}},
@@ -37,42 +37,46 @@ Define whether alarm time refers to decision availability or the start or end of
 The observation image below provides the observation view used to compare activity references and detector outputs.
 ![AeroResilience detection and navigation monitoring](chapters/Chapter_6/figures/Practical_p2_ch_6.jpg)
 Observation view supporting the detector-robustness exercise. Scored results require independently established activity labels, aligned detector decisions, and documented event timing; displayed simulation scopes alone do not establish detector accuracy.
-Threshold selection and computational costs. Record detector thresholds and their selection rationale before scoring the evaluation observations. If tuning is required, use separate development observations and document the separation from evaluation data. Preserve detector settings across conditions unless a predefined adaptation rule is part of the evaluated method.
-Measure processing time per decision window, peak memory use, and sustained processing capacity on the execution platform. Record the processor or accelerator, software environment, input dimensions, batch size, thread settings, and measurement method. Distinguish algorithm execution time from buffering, acquisition, transfer, and reporting delays. Compare decision availability with the required processing deadline. These implementation costs require profiling or instrumentation; they cannot be inferred from the JSON scenario or RF quality metrics alone.
-Performance report. Organize results by interference condition. For each condition, retain the configuration reference, scheduled and actual exposure intervals, active and inactive observation counts, detector settings, confusion counts, missed-detection and false-alarm metrics, event-detection delay, computational costs, and evidence references. Report unknown labels, unsupported metrics, stochastic variability, and timing limitations explicitly. Keep a documented interference-free baseline and identify whether results describe simulation only or an additional measured implementation.
-Implementation checklist.
-Verify reference labels independently of detector decisions.
-Distinguish scheduled windows from actual waveform activity.
-Confirm branch routing and the evaluated observation point.
-Record detector thresholds, preprocessing, and timing conventions.
-Include interference-free observations for false-alarm assessment.
-Report missed events separately from detected-event delay.
-Measure computational costs on the execution platform.
-Preserve labeled observations, configuration revisions, and evidence provenance.
-Expected deliverable. A performance report organized by noise, tone, sweep, random, and combined interference conditions, supported by labeled observations, documented detector settings, condition-specific detection metrics, and measured computational costs where an execution platform is available.
-Practical Example: GNSS Spoofing Detection and Navigation Fusion
-The following exercise uses the AeroResilience navigation blocks to compare a synthetic spoofed position with a fusion-gated estimate. The graph and error curves support an assessment of detection and mitigation under stated assumptions; they do not constitute measurements of a physical GNSS receiver or flight controller.
-Practical Exercise 6.2: GNSS Spoofing Detection and Fusion-Gated Navigation
+Threshold selection and computational costs. Record detector thresholds and the rationale for their selection before scoring the evaluation observations. If tuning is required, use separate development observations and document how they differ from evaluation data. Preserve detector settings across conditions unless a predefined adaptation rule is part of the evaluated method.
+Measure processing time per decision window, peak memory use, and sustained processing capacity on the execution platform. Record the processor or accelerator, software environment, input dimensions, batch size, thread settings, and measurement method. Distinguish algorithm execution time from buffering, acquisition, transfer, and reporting delays. Compare decision availability with the required processing deadline. These implementation costs require profiling or instrumentation; you cannot infer them from the JSON scenario or RF quality metrics alone.
+Performance report. Organize results by interference condition. For each condition, retain the configuration reference, scheduled and actual exposure intervals, active and inactive observation counts, detector settings, confusion counts, missed-detection and false-alarm metrics, event-detection delay, computational costs, and evidence references. Explicitly report unknown labels, unsupported metrics, stochastic variability, and timing limitations. Keep a documented interference-free baseline and identify whether results describe simulation only or an additional measured implementation.
+Implementation checklist:
+- [ ] Verify reference labels independently of detector decisions.
+- [ ] Distinguish scheduled windows from actual waveform activity.
+- [ ] Confirm branch routing and the evaluated observation point.
+- [ ] Record detector thresholds, preprocessing, and timing conventions.
+- [ ] Include interference-free observations for false-alarm assessment.
+- [ ] Report missed events separately from detected-event delay.
+- [ ] Measure computational costs on the execution platform.
+- [ ] Preserve labeled observations, configuration revisions, and evidence provenance.
+- [ ] Expected deliverable. A performance report organized by noise, tone, sweep, random, and combined interference conditions, supported by labeled observations, documented detector settings, condition-specific detection metrics, and measured computational costs where an execution platform is available.
+
+## Practical Example: GNSS Spoofing Detection and Navigation Fusion
+The following exercise uses the AeroResilience navigation blocks to compare a synthetic spoofed position with a fusion-gated estimate. The graph and error curves support an assessment of detection and mitigation under stated assumptions; they do not measure a physical GNSS receiver or flight controller.
+
+### Practical Exercise 6.2: GNSS Spoofing Detection and Fusion-Gated Navigation
 Objective. Trace a GNSS spoofing scenario, calculate a position-innovation alarm, compare raw and fused position errors, and explain the scope and limitations of the demonstrated mitigation.
 Worked situation. Load `GNSS_Spoofing_Carrier_1575_42MHz.json` into the compatible AeroResilience simulator. Inspect the following connected blocks:
-G1: synthetic GNSS position and independent reference.
-G2: GNSS carrier-frequency context, configured as 1575.42 MHz.
-G3: scheduled synthetic position bias.
-G4: position-innovation detector and fusion gate.
-G5: configured power/carrier reference scope.
-G6: mitigated navigation observation scope.
-G7: raw spoofed-position scope, branching directly from G3.
+* G1: synthetic GNSS position and independent reference.
+* G2: GNSS carrier-frequency context, configured as 1575.42 MHz.
+* G3: scheduled synthetic position bias.
+* G4: position-innovation detector and fusion gate.
+* G5: configured power/carrier reference scope.
+* G6: mitigated navigation observation scope.
+* G7: raw spoofed-position scope, branching directly from G3.
 Use the supplied screenshot as the illustrated observation. Verify the loaded parameters and export numerical records before reporting precise results.
 ![AeroResilience detection and navigation monitoring](chapters/Chapter_6/figures/GNSS_Spoofing_ch_6_2.jpg)
 AeroResilience synthetic GNSS-spoofing workflow and position-error comparison. The raw observation branch and GPS-like error traces approach approximately 40–41 m, while fusion-gated error remains near 2 m during the sustained bias interval. The horizontal axis is simulation frame index, not elapsed seconds. Overlapping traces can obscure individual curves.
-Practical procedure.
+
+**Practical procedure**
 Preserve the original JSON, simulator revision, sensor-noise seed, carrier context, threshold, and fusion weights.
 Trace G1–G6 and the G3–G7 side branch. Confirm that both comparison branches share the same source and spoofing realization.
-Identify the configured baseline, bias-growth, sustained-bias, and post-bias intervals. Verify timer boundaries against the parameters rather than graph labels alone.
+Identify the configured baseline, bias-growth, sustained-bias, and post-bias intervals. Verify timer boundaries against the parameters, not graph labels alone.
 Record the current-frame GPS-like position, independent reference, innovation, alarm, gate state, raw error, and fused error. Export the complete 90-frame record for analysis.
 Repeat with fusion gating disabled through `gate_enabled=0`; leave the detector and the remaining configuration unchanged.
 Run a zero-bias baseline and evaluate false alarms separately. State criteria for acceptable position error and detection delay before comparing results.
-Hint. The raw GPS-like error associated with G6 is the error of the input observation retained at that scope, not a second protected position estimate. G7 is upstream of the detector and does not itself implement alarm logic. A carrier-frequency setting supplies model context; it does not generate satellite RF signals or automatically change the position-bias model.
+
+>Hint: The raw GPS-like error associated with G6 is the error of the input observation retained at that scope, not a second protected position estimate. G7 is upstream of the detector and does not itself implement alarm logic. A carrier-frequency setting supplies model context; it does not generate satellite RF signals or automatically change the position-bias model.
 Worked solution: synthetic bias and timeline. For the supplied example configuration, use frames 0–14 as baseline, frames 15–39 for increasing bias, frames 40–74 for sustained exposure, and frames 75–89 for post-bias observations. Confirm these zero-based, half-open boundaries in the JSON.
 Let the full configured displacement be
 $$
@@ -93,13 +97,13 @@ $$
 r_k=|\mathbf{p}^{GPS}_k-\mathbf{p}^{ref}_k|_2,
 \qquad a_k=\mathbb{I}[r_k>\tau_r].
 $$
-For the example, $\tau_r=4$ m. Estimate the first qualifying alarm frame from exported records. An alarm indicates inconsistency relative to the reference; it does not by itself establish malicious intent, emitter identity, or the cause of the discrepancy. Missing-fix alarms, if tested separately, must be distinguished from finite position-innovation alarms.
+For the example, $\tau_r=4$ m. Estimate the first qualifying alarm frame from exported records. An alarm indicates inconsistency relative to the reference; it does not by itself establish malicious intent, emitter identity, or the cause of the discrepancy. If tested separately, missing-fix alarms must be distinguished from finite position-innovation alarms.
 Worked solution: fusion and position error. For a valid observation, model the fused position as
 $$
 \widehat{\mathbf{p}}_k
 =w_k\mathbf{p}^{GPS}_k+(1-w_k)\mathbf{p}^{ref}_k.
 $$
-The example uses $w_k=0.48$ under nominal conditions and $w_k=0.04$ after the alarm when fusion gating is enabled. This downweights GPS rather than completely removing it. The independent reference is an idealized synthetic observation; an operational system would require a separately validated reference and an assessment of correlated errors.
+The example uses $w_k=0.48$ under nominal conditions and $w_k=0.04$ after the alarm when fusion gating is enabled. This downweights GPS rather than removing it completely. The independent reference is an idealized synthetic observation; an operational system would require a separately validated reference and an assessment of correlated errors.
 Using simulator truth $\mathbf{p}^{true}_k$, calculate
 $$
 e_k^{raw}=|\mathbf{p}^{GPS}_k-\mathbf{p}^{true}_k|_2,
@@ -124,12 +128,13 @@ provided the baseline denominator is nonzero. Report negative values when fusion
 Define detection delay in frames as $k_{alarm}-k_{onset}$. Convert to seconds only when a justified frame duration exists. Report undetected exposures separately, and evaluate false alarms on baseline observations using an explicit decision unit and denominator.
 Interpretation and limits. The curves demonstrate synthetic position-error behavior under a configured bias and reference model. They do not establish GNSS RF tracking performance, packet delivery ratio, flight stability, or actual autonomous mode transitions. G5 displays configured power references, not measured RF interference. Changing declared carrier or power fields does not calibrate the synthetic displacement. A low fused error can coexist with a highly corrupted GPS-like observation because the reference dominates the fusion estimate.
 For implementation evaluation, record detector processing latency, observation age, resource costs, and independent-reference reliability. Require controller telemetry before making flight-mode claims. Preserve unsuccessful conditions, including reference degradation and detector false alarms, in any broader validation campaign.
-Implementation checklist.
-Verify source, carrier context, bias schedule, threshold, and fusion weights.
-Preserve identical source observations for raw and mitigated comparisons.
-Distinguish GPS-like error, fused error, alarm state, and gate activation.
-Read exact metrics from exported records rather than overlapping traces.
-Report baseline false alarms, detection delay, and unsuccessful mitigation.
-Distinguish simulation frames, configured RF references, and physical measurements.
-Document reference assumptions, model limitations, and evidence provenance.
-Expected deliverable. An annotated block interpretation, the included figure, a frame-aligned error and alarm record, raw/fused RMSE and peak-error comparison, and an evidence-based explanation of what fusion gating demonstrates and what remains unvalidated.
+Implementation checklist:
+- [ ] Verify source, carrier context, bias schedule, threshold, and fusion weights.
+- [ ] Preserve identical source observations for raw and mitigated comparisons.
+- [ ] Distinguish GPS-like error, fused error, alarm state, and gate activation.
+- [ ] Read exact metrics from exported records rather than overlapping traces.
+- [ ] Report baseline false alarms, detection delay, and unsuccessful mitigation.
+- [ ] Distinguish simulation frames, configured RF references, and physical measurements.
+- [ ] Document reference assumptions, model limitations, and evidence provenance.
+
+**Expected deliverable:** An annotated block interpretation, the included figure, a frame-aligned error and alarm record, raw/fused RMSE and peak-error comparison, and an evidence-based explanation of what fusion gating demonstrates and what remains unvalidated.
