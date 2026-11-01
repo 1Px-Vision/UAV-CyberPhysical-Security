@@ -1,0 +1,240 @@
+{
+  "schema": "connected-jamming-v5",
+  "nodes": [
+    {
+      "origin_id": "B1",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 20,
+        "y": 30
+      },
+      "id": "B1",
+      "name": "Barrage model",
+      "kind": "waveform",
+      "inputs": [],
+      "params": {
+        "strategy": "barrage",
+        "strength": 0.5,
+        "duty": 1,
+        "center": 40,
+        "span": 70
+      }
+    },
+    {
+      "origin_id": "B2",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 20,
+        "y": 200
+      },
+      "id": "B2",
+      "name": "Noise model",
+      "kind": "waveform",
+      "inputs": [],
+      "params": {
+        "strategy": "noise",
+        "strength": 0.35,
+        "duty": 1,
+        "center": 20,
+        "span": 80
+      }
+    },
+    {
+      "origin_id": "B3",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 20,
+        "y": 370
+      },
+      "id": "B3",
+      "name": "Tone model",
+      "kind": "waveform",
+      "inputs": [],
+      "params": {
+        "strategy": "tone",
+        "strength": 0.15,
+        "duty": 1,
+        "center": 20,
+        "span": 5
+      }
+    },
+    {
+      "origin_id": "B4",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 500,
+        "y": 150
+      },
+      "id": "B4",
+      "name": "Combined interference",
+      "kind": "sum",
+      "inputs": [
+        "B9",
+        "B10",
+        "B11"
+      ],
+      "params": {
+        "gain": 1
+      }
+    },
+    {
+      "origin_id": "B5",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 718,
+        "y": 127
+      },
+      "id": "B5",
+      "name": "2400 MHz received interference",
+      "kind": "rf_link",
+      "inputs": [
+        "B4"
+      ],
+      "params": {
+        "carrier_mhz": 2400,
+        "signal_bandwidth_khz": 125,
+        "power_dbm": -65,
+        "snr_db": 40
+      }
+    },
+    {
+      "origin_id": "B7",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 1404,
+        "y": 154
+      },
+      "id": "B7",
+      "name": "Output power scope",
+      "kind": "power_scope",
+      "inputs": [
+        "B6"
+      ],
+      "params": {}
+    },
+    {
+      "origin_id": "B8",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 1009,
+        "y": 290
+      },
+      "id": "B8",
+      "name": "Scenario metrics",
+      "kind": "metrics_scope",
+      "inputs": [],
+      "params": {}
+    },
+    {
+      "origin_id": "n_fe1a74",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 233,
+        "y": 27
+      },
+      "id": "B9",
+      "name": "Timer",
+      "kind": "timer",
+      "inputs": [
+        "B1"
+      ],
+      "params": {
+        "start": 5,
+        "duration": 75,
+        "period": 90
+      }
+    },
+    {
+      "origin_id": "n_fb67c2",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 234,
+        "y": 195
+      },
+      "id": "B10",
+      "name": "Timer",
+      "kind": "timer",
+      "inputs": [
+        "B2"
+      ],
+      "params": {
+        "start": 5,
+        "duration": 75,
+        "period": 90
+      }
+    },
+    {
+      "origin_id": "n_049169",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 245,
+        "y": 368
+      },
+      "id": "B11",
+      "name": "Timer",
+      "kind": "timer",
+      "inputs": [
+        "B3"
+      ],
+      "params": {
+        "start": 5,
+        "duration": 75,
+        "period": 90
+      }
+    },
+    {
+      "origin_id": "n_ca0319",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 961,
+        "y": 154
+      },
+      "id": "B12",
+      "name": "Antenna gains",
+      "kind": "antenna",
+      "inputs": [
+        "B5"
+      ],
+      "params": {
+        "tx_type": "yagi",
+        "rx_type": "dipole",
+        "tx_gain_dbi": 10.15,
+        "rx_gain_dbi": 2.15,
+        "polarization_loss_db": 0
+      }
+    },
+    {
+      "origin_id": "n_7408de",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 1176,
+        "y": 154
+      },
+      "id": "B6",
+      "name": "Channel effects",
+      "kind": "channel",
+      "inputs": [
+        "B12"
+      ],
+      "params": {
+        "attenuation_db": 6,
+        "fading_depth_db": 3,
+        "fading_period_frames": 30,
+        "added_noise_dbm": -110
+      }
+    }
+  ],
+  "output": "B7"
+}
