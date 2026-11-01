@@ -30,7 +30,7 @@ After scheduled exposure	$60\leq k<90$
   
 Verify this convention against the loaded timer rather than assuming it. A 90-frame period may imply repetition; it does not necessarily define the total run length. You cannot convert frame counts to seconds without a documented frame duration. An interval labeled “after exposure” is a recovery-observation window, not proof that recovery has occurred.
 Illustrated disturbance schedule. Figure 1 shows the recovery scenario and its exposure timing.
-![Figure 1: Disturbance schedule](chapters/Chapter_10/figures/Practical_p1_ch_10.jpg)
+![Figure 1: Disturbance schedule](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Chapter_10/Disturbance%20schedule.jpg)
 
 Proposed AeroResilience recovery-scenario view showing scheduled noise exposure and the link-performance observation path. Before-, during-, and after-exposure labels require verification of timer boundaries and actual interference activity.
 Hint. Distinguish between disturbance onset, detector alarm, escalation decision, controller command, confirmed controller state, exposure cessation, and accepted recovery. These events may occur at different times. A command log alone is not confirmation that the flight controller has entered the requested mode.
