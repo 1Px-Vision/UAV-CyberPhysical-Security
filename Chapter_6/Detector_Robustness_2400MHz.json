@@ -1,0 +1,344 @@
+{
+  "schema": "connected-jamming-v5",
+  "nodes": [
+    {
+      "origin_id": "B1",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 20,
+        "y": 30
+      },
+      "id": "B1",
+      "name": "Noise detector test",
+      "kind": "waveform",
+      "inputs": [],
+      "params": {
+        "strategy": "noise",
+        "strength": 0.5,
+        "duty": 1,
+        "center": 20,
+        "span": 80
+      }
+    },
+    {
+      "origin_id": "B2",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 270,
+        "y": 30
+      },
+      "id": "B2",
+      "name": "Noise frames 10-19",
+      "kind": "timer",
+      "inputs": [
+        "B1"
+      ],
+      "params": {
+        "start": 10,
+        "duration": 10,
+        "period": 90
+      }
+    },
+    {
+      "origin_id": "B3",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 20,
+        "y": 210
+      },
+      "id": "B3",
+      "name": "Tone detector test",
+      "kind": "waveform",
+      "inputs": [],
+      "params": {
+        "strategy": "tone",
+        "strength": 0.25,
+        "duty": 1,
+        "center": 20,
+        "span": 5
+      }
+    },
+    {
+      "origin_id": "B4",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 270,
+        "y": 210
+      },
+      "id": "B4",
+      "name": "Tone frames 25-34",
+      "kind": "timer",
+      "inputs": [
+        "B3"
+      ],
+      "params": {
+        "start": 25,
+        "duration": 10,
+        "period": 90
+      }
+    },
+    {
+      "origin_id": "B5",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 20,
+        "y": 390
+      },
+      "id": "B5",
+      "name": "Sweep detector test",
+      "kind": "waveform",
+      "inputs": [],
+      "params": {
+        "strategy": "sweep",
+        "strength": 1,
+        "duty": 1,
+        "center": 40,
+        "span": 70
+      }
+    },
+    {
+      "origin_id": "B6",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 270,
+        "y": 390
+      },
+      "id": "B6",
+      "name": "Sweep frames 40-49",
+      "kind": "timer",
+      "inputs": [
+        "B5"
+      ],
+      "params": {
+        "start": 40,
+        "duration": 10,
+        "period": 90
+      }
+    },
+    {
+      "origin_id": "B7",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 20,
+        "y": 570
+      },
+      "id": "B7",
+      "name": "Random detector test",
+      "kind": "waveform",
+      "inputs": [],
+      "params": {
+        "strategy": "random",
+        "strength": 0.125,
+        "duty": 0.35,
+        "center": 20,
+        "span": 80
+      }
+    },
+    {
+      "origin_id": "B8",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 270,
+        "y": 570
+      },
+      "id": "B8",
+      "name": "Random frames 55-64",
+      "kind": "timer",
+      "inputs": [
+        "B7"
+      ],
+      "params": {
+        "start": 55,
+        "duration": 10,
+        "period": 90
+      }
+    },
+    {
+      "origin_id": "B9",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 510,
+        "y": 210
+      },
+      "id": "B9",
+      "name": "Mixed noise frames 70-79",
+      "kind": "timer",
+      "inputs": [
+        "B1"
+      ],
+      "params": {
+        "start": 70,
+        "duration": 10,
+        "period": 90
+      }
+    },
+    {
+      "origin_id": "B10",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 510,
+        "y": 390
+      },
+      "id": "B10",
+      "name": "Mixed tone frames 70-79",
+      "kind": "timer",
+      "inputs": [
+        "B3"
+      ],
+      "params": {
+        "start": 70,
+        "duration": 10,
+        "period": 90
+      }
+    },
+    {
+      "origin_id": "B11",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 510,
+        "y": 570
+      },
+      "id": "B11",
+      "name": "Mixed sweep frames 70-79",
+      "kind": "timer",
+      "inputs": [
+        "B5"
+      ],
+      "params": {
+        "start": 70,
+        "duration": 10,
+        "period": 90
+      }
+    },
+    {
+      "origin_id": "B12",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 760,
+        "y": 30
+      },
+      "id": "B12",
+      "name": "Detector robustness schedule",
+      "kind": "sum",
+      "inputs": [
+        "B2",
+        "B4",
+        "B6",
+        "B8",
+        "B9",
+        "B10",
+        "B11"
+      ],
+      "params": {
+        "gain": 1
+      }
+    },
+    {
+      "origin_id": "B13",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 987,
+        "y": 30
+      },
+      "id": "B13",
+      "name": "2400 MHz interference reference",
+      "kind": "rf_link",
+      "inputs": [
+        "B12"
+      ],
+      "params": {
+        "carrier_mhz": 2400,
+        "signal_bandwidth_khz": 125,
+        "power_dbm": -60,
+        "snr_db": 40
+      }
+    },
+    {
+      "origin_id": "B15",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 1667,
+        "y": 55
+      },
+      "id": "B15",
+      "name": "Detector input exposure scope",
+      "kind": "power_scope",
+      "inputs": [
+        "B14"
+      ],
+      "params": {}
+    },
+    {
+      "origin_id": "B16",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 1480,
+        "y": 340
+      },
+      "id": "B16",
+      "name": "Detector evaluation metrics",
+      "kind": "metrics_scope",
+      "inputs": [],
+      "params": {}
+    },
+    {
+      "origin_id": "n_bf34db",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 1249,
+        "y": 56
+      },
+      "id": "B17",
+      "name": "Antenna gains",
+      "kind": "antenna",
+      "inputs": [
+        "B13"
+      ],
+      "params": {
+        "tx_type": "yagi",
+        "rx_type": "dipole",
+        "tx_gain_dbi": 10.15,
+        "rx_gain_dbi": 2.15,
+        "polarization_loss_db": 0
+      }
+    },
+    {
+      "origin_id": "n_3dd0f7",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 1453,
+        "y": 56
+      },
+      "id": "B14",
+      "name": "Channel effects",
+      "kind": "channel",
+      "inputs": [
+        "B17"
+      ],
+      "params": {
+        "attenuation_db": 6,
+        "fading_depth_db": 3,
+        "fading_period_frames": 30,
+        "added_noise_dbm": -110
+      }
+    }
+  ],
+  "output": "B15"
+}
