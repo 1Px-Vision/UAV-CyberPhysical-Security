@@ -30,9 +30,9 @@ a_{\mathrm{packet}}
 = k_{\mathrm{replay}}-k_{\mathrm{source}}.
 $$
 
-Check the result against the implementation’s frame-index convention. Do not assume a replay event occurs exactly five frames after every source packet, because eligibility, scheduling, and probability semantics must also be established.
+Check the result against the implementation’s frame-index convention. Do not assume a replay event occurs exactly five frames after every source packet, because you must also establish eligibility, scheduling, and probability semantics.
 The probability parameter $0.3$ is a configuration value, not a guaranteed observed replay fraction. Record the actual number of eligible events and replay events if available, together with the random seed and observation interval. If these details are not exposed, identify the missing instrumentation rather than inventing event records. The output image below provides the output view used to compare RF observations and packet-event evidence.
-![AeroResilience RF and packet-replay assessment](chapters/Chapter_5/figures/Practical_p2_ch_5.jpg)
+![AeroResilience RF and packet-replay assessment](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Chapter_5/AeroResilience%20RF%20and%20packet-replay%20assessment_Signals.jpg)
 AeroResilience output view supporting assessment of RF availability effects and synthetic packet-replay behavior. Conclusions require branch-specific evidence and aligned observation intervals; successful packet delivery alone does not establish freshness or authentication.
 Additional receiver validation. The supplied file description does not implement an authentication defense. Replay rejection must therefore be evaluated through an additional receiver-validation mechanism. Define that mechanism separately, including how it handles packet identity, sequence numbers or counters, freshness windows, session state, and integrity or authentication checks where implemented. Authentication alone does not establish freshness unless the protocol also validates freshness-related information and maintains the required state.
 
@@ -56,11 +56,11 @@ Implementation checklist:
 
 ## Practical Example: Evidence-Based Red and Purple Team Evaluation
 
-References to named relations below refer to equations in the full chapter that were not included in the supplied excerpt. The numerical equations supplied with the exercise are retained. This exercise applies the RF-intelligence, red-team coverage, defensive-effectiveness, and reporting equations developed in this chapter. An initial red-team assessment identifies gaps; a purple-team cycle connects those gaps to blue-team improvements and independent retesting. Disturbance generation, alarm production, controller response, and mission outcome remain separate evidence items.
+References to named relations below refer to equations in the full chapter that were not included in the supplied excerpt. The exercise retains the numerical equations supplied. This exercise applies the RF-intelligence, red-team coverage, defensive-effectiveness, and reporting equations developed in this chapter. An initial red-team assessment identifies gaps; a purple-team cycle connects those gaps to blue-team improvements and independent retesting. Disturbance generation, alarm production, controller response, and mission outcome remain separate evidence items.
 
 ### Practical Exercise 5.2: Red-Team Assessment and Purple-Team Improvement
 **Objective:** Evaluate a simulated UAV monitoring and response architecture using traceable RF observations, coverage matrices, response deadlines, recovery evidence, and before/after defensive measurements.
-**Worked situation:** A ground-control emulator communicates with a UAV emulator during a virtual observation mission. The red team introduces scheduled RF disturbance and synthetic replay or unauthorized-command events through documented test interfaces. The blue team monitors RF features, packet-validation decisions, and emulator state. The purple team reviews evidence jointly, implements a bounded correction, and organizes a frozen retest. Use simulation or recorded laboratory data. A physical extension requires separately authorized, instrumented, contained testing. The exercise does not assume that an RF waveform causes packet loss or flight-mode changes unless the implementation explicitly connects and verifies those effects.
+**Worked situation:** A ground-control emulator communicates with a UAV emulator during a virtual observation mission. The red team introduces scheduled RF disturbance and synthetic replay or unauthorized-command events through documented test interfaces. The blue team monitors RF features, packet-validation decisions, and emulator state. The purple team jointly reviews evidence, implements a bounded correction, and organizes a frozen retest. Use simulation or recorded laboratory data. A physical extension requires separately authorized, instrumented, contained testing. The exercise does not assume that an RF waveform causes packet loss or flight-mode changes unless the implementation explicitly connects and verifies those effects.
 
 1. Define the campaign and roles. Instantiate the campaign tuple in the relation (red team tuple):
 * $\mathcal{A}$: evaluate detection of disturbed communication and rejection of synthetic invalid commands.
@@ -79,7 +79,9 @@ J_k^{RF}=0.4(2)+0.4(1-0.5)+0.2(0.4)=1.08.
 $$
 
 This is a heuristic index, not a probability and not necessarily bounded by one. Before applying the relation (rf intelligence risk) or the relation (blue team fusion score), define compatible component scales, score direction, missing-data handling, and weights. Do not count the same underlying observation repeatedly as independent corroboration.
-4. Execute the red-team baseline. Define authorized technique columns as RF-disturbance emulation, synthetic replay testing, and unauthorized-command validation. Define two subsystem rows as the RF receiver model and C2 receiver emulator. For an illustrative executed-test matrix,
+4. Execute the red-team baseline. Define authorized technique columns as RF-disturbance emulation, synthetic replay testing, and unauthorized-command validation. 
+
+Define two subsystem rows: the RF receiver model and the C2 receiver emulator. For an illustrative executed-test matrix,
 
 $$
 \mathbf{E}=\begin{bmatrix}1&1&0\0&1&0\end{bmatrix},
