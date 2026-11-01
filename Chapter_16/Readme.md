@@ -69,12 +69,8 @@ A HAPS-assisted UAV ecosystem connects aircraft, relay services, operators, traf
 
 ##### Practical Exercise 16.2: Runtime Assurance and Resilient Decisions in a HAPS-Assisted Mission
 **Objective:** Evaluate an AI-generated command using a state-dependent safety gate, calculate an electromagnetic risk index, and decide how relay and navigation degradation should affect permitted autonomy.
-**Worked situation:** A disaster-response UAV communicates through a HAPS relay. A learning-based planner proposes a motion command while telemetry delay and position inconsistency increase. Evaluate the safety monitor, relay-quality observations, and operator escalation policy separately from the planner’s output.
+**Worked situation:** A disaster-response UAV communicates through a HAPS relay. A learning-based planner proposes a motion command while telemetry delay and position inconsistency increase. Evaluate the safety monitor, relay-quality observations, and operator escalation policy separately from the planner’s output. Use Eq. `eq:runtime_assurance_ai_uav` for the command-selection rule. For this classroom model, let $\mathbf{u}=[v_x,v_y,v_z]^T$ in m/s and define a state-dependent admissible set requiring horizontal speed no greater than 3 m/s, vertical speed magnitude no greater than 1 m/s, and a predicted next state inside the approved virtual boundary. Evaluate membership based on the current state and uncertainty, not command magnitude alone. Tasks: Apply Eq. `eq:runtime_assurance_ai_uav` to the proposed command and record the safety-monitor decision.
 
-Use Eq. `eq:runtime_assurance_ai_uav` for the command-selection rule. For this classroom model, let $\mathbf{u}=[v_x,v_y,v_z]^T$ in m/s and define a state-dependent admissible set requiring horizontal speed no greater than 3 m/s, vertical speed magnitude no greater than 1 m/s, and a predicted next state inside the approved virtual boundary. Evaluate membership based on the current state and uncertainty, not command magnitude alone.
-Tasks.
-
-Apply Eq. `eq:runtime_assurance_ai_uav` to the proposed command and record the safety-monitor decision.
 Normalize the observations entering Eq. `eq:em_risk_score` and calculate the risk index.
 Use Eq. `eq:em_degraded_mode_decision` as a candidate mode-selection policy, then verify the preconditions for the selected response.
 Specify HAPS link, navigation, controller, and operator evidence required before accepting a mode transition or recovery.
