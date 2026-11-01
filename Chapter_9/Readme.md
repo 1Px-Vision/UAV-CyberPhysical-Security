@@ -3,8 +3,7 @@ A counter-UAS security system can use RF sensing, radar, optical or thermal sens
 Keep detection, identification, authorization checks, and response decisions separate. Hardware and software requirements depend on sensor coverage, data rates, processing speed, and the number of tracks monitored simultaneously. To ensure accountability, record when alerts are generated, how operators interpret them, who makes decisions, and any approved responses. Manage evidence so it can be reviewed later under applicable information governance rules.
 
 ## Practical Example: RF Observations, Authorization, and Evidence Fusion
-RF monitoring can characterize a communication disturbance without establishing its source, an aircraft's authorization status, or hostile intent. This exercise uses contrasting simulated exposure patterns to distinguish disturbance detection from identification, attribution, and operational decision-making.
-The evidence-fusion proposal identifies the records, tracking observations, and human review needed to support a bounded decision.
+RF monitoring can characterize a communication disturbance without establishing its source, an aircraft's authorization status, or hostile intent. This exercise uses contrasting simulated exposure patterns to distinguish disturbance detection from identification, attribution, and operational decision-making. The evidence-fusion proposal identifies the records, tracking observations, and human review needed to support a bounded decision.
 
 ### Practical Exercise 10.1: From RF Disturbance Observations to Reviewed Decisions
 **Objective:** Compare continuous, intermittent, and random RF disturbance patterns and develop an evidence-fusion proposal that preserves uncertainty and separates observation from authorization and response decisions.
@@ -27,6 +26,7 @@ Proposed comparison of simulated continuous, intermittent, and random spot-inter
 
 **Worked Solution:** Characterize the Disturbance
 Prepare one observation record for each scenario. State the configured temporal behavior and compare it with actual model activity and reported outputs.
+
 **Retain:** 
 * The observation point.
 * Frequency and bandwidth, where available.
