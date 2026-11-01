@@ -21,26 +21,33 @@ AeroResilience configuration view for a detector-robustness monitoring exercise.
 
 > Hint. An enabled timer does not necessarily imply continuous interference at the detector input. Waveform duty cycles, random activation, frequency occupancy, and routing may change actual activity within a scheduled window. A sample-level zero crossing also does not imply an inactive waveform. Define activity over suitable frames or windows using generator evidence or an independent labeling rule, rather than reusing the detector threshold as ground truth.
 
-Worked solution: reference labels. For observation window $k$, retain a scheduled indicator $s_k$, an actual-activity reference $y_k$, and the detector decision $\widehat{y}_k$. Define $y_k=1$ when interference is active under the documented reference rule at the chosen observation point, and $y_k=0$ when it is absent. If you cannot reliably establish activity, mark the window as unknown and report its exclusion from scored observations.
+**Worked solution reference labels:** For observation window $k$, retain a scheduled indicator $s_k$, an actual-activity reference $y_k$, and the detector decision $\widehat{y}_k$. Define $y_k=1$ when interference is active under the documented reference rule at the chosen observation point, and $y_k=0$ when it is absent. If you cannot reliably establish activity, mark the window as unknown and report its exclusion from scored observations.
+
 Assign a separate condition label for noise, tone, sweep, random, or combined exposure. Verify whether “random” describes a waveform type, activation schedule, or another model parameter. For overlapping exposures, retain the constituent labels and define how you group combined-condition results to avoid unreported double counting. Record any disagreement between scheduled and actual activity as a reference-data finding, not automatically as a detector error.
-Worked solution: detection metrics. Using the actual-activity reference and aligned detector decisions, count true positives (TP), false negatives (FN), false positives (FP), and true negatives (TN). For binary activity detection, report
+
+**Worked solution detection metrics:** Using the actual-activity reference and aligned detector decisions, count true positives (TP), false negatives (FN), false positives (FP), and true negatives (TN). For binary activity detection, report
+
 $$
 P_{\mathrm{miss}} = \frac{\mathrm{FN}}{\mathrm{TP}+\mathrm{FN}},
 \qquad
 P_{\mathrm{FA}} = \frac{\mathrm{FP}}{\mathrm{FP}+\mathrm{TN}}.
 $$
+
 State the scoring unit, observation-window duration, and number of labeled windows supporting each ratio. Report a metric as undefined when its denominator is zero. False alarms require interference-free reference windows; retain a shared baseline or suitably matched inactive intervals and explain how they support each condition’s comparison. If reporting false alarms per unit time, state the inactive observation duration and alarm-event grouping rule separately.
 For each reference event with onset $t_{\mathrm{onset},j}$, match the first qualifying alarm using a predefined event-matching rule and calculate
+
 $$
 d_j = t_{\mathrm{alarm},j}-t_{\mathrm{onset},j}.
 $$
+
 Define whether alarm time refers to decision availability or the start or end of its input window. State the timing resolution and allowed matching interval. Report events without a qualifying alarm as missed events rather than assigning them zero delay. Summarize delay for detected events together with the number and fraction of missed events.
 The observation image below provides the observation view used to compare activity references and detector outputs.
 ![AeroResilience detection and navigation monitoring](chapters/Chapter_6/figures/Practical_p2_ch_6.jpg)
 Observation view supporting the detector-robustness exercise. Scored results require independently established activity labels, aligned detector decisions, and documented event timing; displayed simulation scopes alone do not establish detector accuracy.
 Threshold selection and computational costs. Record detector thresholds and the rationale for their selection before scoring the evaluation observations. If tuning is required, use separate development observations and document how they differ from evaluation data. Preserve detector settings across conditions unless a predefined adaptation rule is part of the evaluated method.
 Measure processing time per decision window, peak memory use, and sustained processing capacity on the execution platform. Record the processor or accelerator, software environment, input dimensions, batch size, thread settings, and measurement method. Distinguish algorithm execution time from buffering, acquisition, transfer, and reporting delays. Compare decision availability with the required processing deadline. These implementation costs require profiling or instrumentation; you cannot infer them from the JSON scenario or RF quality metrics alone.
-Performance report. Organize results by interference condition. For each condition, retain the configuration reference, scheduled and actual exposure intervals, active and inactive observation counts, detector settings, confusion counts, missed-detection and false-alarm metrics, event-detection delay, computational costs, and evidence references. Explicitly report unknown labels, unsupported metrics, stochastic variability, and timing limitations. Keep a documented interference-free baseline and identify whether results describe simulation only or an additional measured implementation.
+
+**Performance report:** Organize results by interference condition. For each condition, retain the configuration reference, scheduled and actual exposure intervals, active and inactive observation counts, detector settings, confusion counts, missed-detection and false-alarm metrics, event-detection delay, computational costs, and evidence references. Explicitly report unknown labels, unsupported metrics, stochastic variability, and timing limitations. Keep a documented interference-free baseline and identify whether results describe simulation only or an additional measured implementation.
 Implementation checklist:
 - [ ] Verify reference labels independently of detector decisions.
 - [ ] Distinguish scheduled windows from actual waveform activity.
@@ -78,41 +85,54 @@ Repeat with fusion gating disabled through `gate_enabled=0`; leave the detector 
 Run a zero-bias baseline and evaluate false alarms separately. State criteria for acceptable position error and detection delay before comparing results.
 
 >Hint: The raw GPS-like error associated with G6 is the error of the input observation retained at that scope, not a second protected position estimate. G7 is upstream of the detector and does not itself implement alarm logic. A carrier-frequency setting supplies model context; it does not generate satellite RF signals or automatically change the position-bias model.
-Worked solution: synthetic bias and timeline. For the supplied example configuration, use frames 0–14 as baseline, frames 15–39 for increasing bias, frames 40–74 for sustained exposure, and frames 75–89 for post-bias observations. Confirm these zero-based, half-open boundaries in the JSON.
+
+**Worked solution synthetic bias and timeline:** For the supplied example configuration, use frames 0–14 as baseline, frames 15–39 for increasing bias, frames 40–74 for sustained exposure, and frames 75–89 for post-bias observations. Confirm these zero-based, half-open boundaries in the JSON.
+
 Let the full configured displacement be
+
 $$
 \mathbf{b}{\max}=
 \begin{bmatrix}35&-20&5\end{bmatrix}^{T},\mathrm{m},
 \qquad |\mathbf{b}{\max}|=\sqrt{35^2+20^2+5^2}
 \approx40.62,\mathrm{m}.
 $$
+
 Within the exposure window, a compatible implementation uses
+
 $$
 u_k=\min!\left(1,\frac{k-15+1}{25}\right),
 \qquad g_k=3u_k^2-2u_k^3,
 \qquad \mathbf{b}k=g_k\mathbf{b}{\max}.
 $$
+
 Outside that window, the configured bias is zero. Sensor noise explains why observed raw error differs slightly from the displacement norm. Removing the bias at frame 75 is an immediate model reset, not demonstrated receiver reacquisition or physical recovery.
 Worked solution: innovation detection. Define the observed discrepancy between the GPS-like position $\mathbf{p}^{GPS}_k$ and independent reference $\mathbf{p}^{ref}_k$:
+
 $$
 r_k=|\mathbf{p}^{GPS}_k-\mathbf{p}^{ref}_k|_2,
 \qquad a_k=\mathbb{I}[r_k>\tau_r].
 $$
-For the example, $\tau_r=4$ m. Estimate the first qualifying alarm frame from exported records. An alarm indicates inconsistency relative to the reference; it does not by itself establish malicious intent, emitter identity, or the cause of the discrepancy. If tested separately, missing-fix alarms must be distinguished from finite position-innovation alarms.
-Worked solution: fusion and position error. For a valid observation, model the fused position as
+
+For the example, $\tau_r=4$ m. Estimate the first qualifying alarm frame from exported records. An alarm indicates inconsistency relative to the reference; it does not by itself establish malicious intent, emitter identity, or the cause of the discrepancy. If tested separately, distinguish missing-fix alarms from finite position-innovation alarms.
+
+**Worked solution fusion and position error: For a valid observation, model the fused position as
+
 $$
 \widehat{\mathbf{p}}_k
 =w_k\mathbf{p}^{GPS}_k+(1-w_k)\mathbf{p}^{ref}_k.
 $$
-The example uses $w_k=0.48$ under nominal conditions and $w_k=0.04$ after the alarm when fusion gating is enabled. This downweights GPS rather than removing it completely. The independent reference is an idealized synthetic observation; an operational system would require a separately validated reference and an assessment of correlated errors.
-Using simulator truth $\mathbf{p}^{true}_k$, calculate
+
+The example uses $w_k=0.48$ under nominal conditions and $w_k=0.04$ after the alarm when fusion gating is enabled. This downweights GPS rather than removing it completely. The independent reference is an idealized synthetic observation; an operational system would require a separately validated reference and an assessment of correlated errors. Using simulator truth $\mathbf{p}^{true}_k$, calculate
+
 $$
 e_k^{raw}=|\mathbf{p}^{GPS}_k-\mathbf{p}^{true}_k|_2,
 \qquad
 e_k^{fused}=|\widehat{\mathbf{p}}_k-\mathbf{p}^{true}_k|_2.
 $$
+
 The screenshot shows raw error near 40–41 m during sustained exposure and fused error near 2 m. Report these as approximate figure readings. Obtain exact maxima and averages from the CSV; the image alone does not support precise values or an exact alarm time.
 For a declared exposure set $\mathcal{K}$ with $M$ valid paired observations, report
+
 $$
 \mathrm{RMSE}{raw}
 =\sqrt{\frac{1}{M}\sum{k\in\mathcal{K}}(e_k^{raw})^2},
@@ -120,11 +140,14 @@ $$
 \mathrm{RMSE}{fused}
 =\sqrt{\frac{1}{M}\sum{k\in\mathcal{K}}(e_k^{fused})^2}.
 $$
+
 An optional relative reduction is
+
 $$
 G_{RMSE}=100\left(1-
 \frac{\mathrm{RMSE}{fused}}{\mathrm{RMSE}{raw}}\right)%,
 $$
+
 provided the baseline denominator is nonzero. Report negative values when fusion worsens error; do not retain only improved intervals.
 Define detection delay in frames as $k_{alarm}-k_{onset}$. Convert to seconds only when a justified frame duration exists. Report undetected exposures separately, and evaluate false alarms on baseline observations using an explicit decision unit and denominator.
 Interpretation and limits. The curves demonstrate synthetic position-error behavior under a configured bias and reference model. They do not establish GNSS RF tracking performance, packet delivery ratio, flight stability, or actual autonomous mode transitions. G5 displays configured power references, not measured RF interference. Changing declared carrier or power fields does not calibrate the synthetic displacement. A low fused error can coexist with a highly corrupted GPS-like observation because the reference dominates the fusion estimate.
