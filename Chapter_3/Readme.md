@@ -30,10 +30,10 @@ $$
 = -70 - (-100) = 30,\mathrm{dB}.
 $$
 
-This value describes the stated configuration before any additional model effects; it must not replace the simulator’s reported SNR without checking the model definitions. Similarly, where $J_{\mathrm{RX},i}$ is the received interference power in dBm at the same reference point as the desired signal,
+This value describes the stated configuration before any additional model effects; it must not replace the simulator’s reported SNR unless you check the model definitions. Similarly, where $J_{\mathrm{RX},i}$ is the received interference power in dBm at the same reference point as the desired signal,
 
 $$
-(J/S)_i\,[\mathrm{dB}]
+\mathrm{(J/S)_i\,{\mathrm{dB}}}
 = J_{\mathrm{RX},i}\,[\mathrm{dBm}]
 - S_{\mathrm{RX}}\,[\mathrm{dBm}].
 $$
