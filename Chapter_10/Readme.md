@@ -165,7 +165,7 @@ Export raw position, reference position, innovation, alarm, fusion weight, and e
 Calculate the full-bias fused error in a noise-free reference case and distinguish it from the noisy simulator result.
 Compare gated and ungated runs using paired observation windows, RMSE, peak error, detection delay, and baseline false alarms.
 Explain which conclusions concern synthetic spoofing detection and which would require independent receiver or flight-controller evidence.
-![Figure 3: Synthetic GNSS spoofing and position errors](chapters/Chapter_10/figures/GNSS_Spoofing_ch_10_3.jpg)
+![Figure 3: Synthetic GNSS spoofing and position errors](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Chapter_10/Synthetic%20GNSS%20spoofing%20and%20position%20errors.jpg)
 AeroResilience synthetic GNSS-spoofing workflow and position-error comparison. The raw observation branch and GPS-like error traces approach approximately 40–41 m, while fusion-gated error remains near 2 m during the sustained bias interval. The horizontal axis is the simulation frame index, not elapsed seconds. Overlapping traces can obscure individual curves.
 Worked solution 1: position-bias model. Write the modeled GPS-like observation as
 
