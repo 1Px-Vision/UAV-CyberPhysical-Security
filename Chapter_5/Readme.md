@@ -19,7 +19,7 @@ Illustrated workflow. The workflow image below provides the configuration view u
 ![AeroResilience RF and packet-replay assessment](chapters/Chapter_5/figures/Practical_p1_ch_5.jpg)
 AeroResilience workflow view for simultaneous modeled RF disturbance and synthetic packet replay. The RF branch represents pulsed and tone interference, while the separate packet branch supports inspection of the packet source and replay configuration.
 
-**Hint:** A packet may be received successfully yet be stale or duplicated. Conversely, a legitimate fresh packet may be lost because of RF impairment. A communication-quality metric alone cannot distinguish these cases. A five-frame age is not a physical time delay until the frame duration and timing convention are established.
+**Hint:** A packet may be received successfully yet be stale or duplicated. Conversely, RF impairment may cause a legitimate fresh packet to be lost. A communication-quality metric alone cannot distinguish these cases. A five-frame age is not a physical time delay until the frame duration and timing convention are established.
 
 **Worked solution RF availability:** Create an RF assessment record containing the exposure interval, pulsed and tone settings, and reported link-performance indicators. Compare the disturbed case with a matched baseline where supported. Identify whether displayed PDR is an expected model output or a measured packet-count ratio, and document whether replay-generated packets influence any reported counters. Interpret degradation as a modeled availability effect without treating it as evidence of failed authentication.
 
@@ -30,7 +30,7 @@ a_{\mathrm{packet}}
 = k_{\mathrm{replay}}-k_{\mathrm{source}}.
 $$
 
-Check the result against the implementation’s frame-index convention. Do not assume that a replay event will occur exactly five frames after every source packet, because eligibility, scheduling, and probability semantics must also be established.
+Check the result against the implementation’s frame-index convention. Do not assume a replay event occurs exactly five frames after every source packet, because eligibility, scheduling, and probability semantics must also be established.
 The probability parameter $0.3$ is a configuration value, not a guaranteed observed replay fraction. Record the actual number of eligible events and replay events if available, together with the random seed and observation interval. If these details are not exposed, identify the missing instrumentation rather than inventing event records. The output image below provides the output view used to compare RF observations and packet-event evidence.
 ![AeroResilience RF and packet-replay assessment](chapters/Chapter_5/figures/Practical_p2_ch_5.jpg)
 AeroResilience output view supporting assessment of RF availability effects and synthetic packet-replay behavior. Conclusions require branch-specific evidence and aligned observation intervals; successful packet delivery alone does not establish freshness or authentication.
