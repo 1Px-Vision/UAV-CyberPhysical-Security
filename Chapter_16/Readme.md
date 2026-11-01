@@ -126,7 +126,7 @@ $$
 \mathcal{P}_{risk}=0.225+0.16+0.14+0.12-0.075=0.57.
 $$
 
-**Propose a documented minimization plan:** collect only mission-needed products, reduce unnecessary location precision where appropriate, restrict recipients, define retention, and audit access. Test whether any redaction preserves task utility and whether identifiers remain recoverable from other metadata. Do not claim formal differential privacy merely because imagery is blurred or noise is added.
+**Propose a documented minimization plan:** collect only mission-needed products, reduce unnecessary location precision where appropriate, restrict recipients, define retention, and audit access. Test whether any redaction preserves task utility and whether identifiers remain recoverable from other metadata. Do not claim formal differential privacy merely because you blur imagery or add noise.
 The result is an ordinal/weighted decision-support index, not a probability of privacy harm or a legal-compliance decision. Subtractive scores can fall outside $[0,1]$ unless you define a range convention. Mandatory data-governance requirements cannot be traded away by a favorable mitigation score.
 
 **Worked solution:** reproducible benchmark. Apply Eq. `eq:uav_security_benchmark_objective` only after defining all metric denominators and normalizing latency and energy, or assigning weights with appropriate units. For a synthetic comparison, let normalized metric vectors $(SR,CR,FPR,LAT,EC,REC)$ be $\mathbf{m}{base}=(0.85,0.02,0.08,0.40,0.50,0.70)$, $\mathbf{m}{new}=(0.90,0.01,0.04,0.30,0.55,0.85)$.  
@@ -143,4 +143,5 @@ Verification checklist:
 - [ ] Measure benchmark costs and preserve denominators, exclusions, and uncertainty.
 - [ ] Report adverse outcomes and energy or latency tradeoffs alongside improvements.
 - [ ] Assign accountable reviewers and provide a correction path for disputed evidence.
-- [ ] Expected deliverable. An ecosystem-assurance register linking the four equation-based assessments to mandatory checks, stakeholder impacts, reproducible benchmark evidence, unresolved gaps, and accountable review decisions.
+
+**Expected deliverable:** An ecosystem-assurance register linking the four equation-based assessments to mandatory checks, stakeholder impacts, reproducible benchmark evidence, unresolved gaps, and accountable review decisions.
