@@ -1,0 +1,139 @@
+{
+  "schema": "connected-jamming-v5",
+  "nodes": [
+    {
+      "origin_id": "B1",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 59,
+        "y": 67
+      },
+      "id": "B1",
+      "name": "Eight-tone barrage - equal power",
+      "kind": "multi_tone_barrage",
+      "inputs": [],
+      "params": {
+        "strength": 1,
+        "tone_count": 8,
+        "first_khz": 5,
+        "spacing_khz": 10
+      }
+    },
+    {
+      "origin_id": "B2",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 287,
+        "y": 58
+      },
+      "id": "B2",
+      "name": "Barrage exposure frames 10-69",
+      "kind": "timer",
+      "inputs": [
+        "B1"
+      ],
+      "params": {
+        "start": 5,
+        "duration": 75,
+        "period": 90
+      }
+    },
+    {
+      "origin_id": "B3",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 520,
+        "y": 30
+      },
+      "id": "B3",
+      "name": "2400 MHz received interference",
+      "kind": "rf_link",
+      "inputs": [
+        "B2"
+      ],
+      "params": {
+        "carrier_mhz": 2400,
+        "signal_bandwidth_khz": 125,
+        "power_dbm": -55,
+        "snr_db": 40
+      }
+    },
+    {
+      "origin_id": "B5",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 1294,
+        "y": 61
+      },
+      "id": "B5",
+      "name": "Multi-tone barrage output scope",
+      "kind": "power_scope",
+      "inputs": [
+        "B8"
+      ],
+      "params": {}
+    },
+    {
+      "origin_id": "B6",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 1046,
+        "y": 260
+      },
+      "id": "B6",
+      "name": "Scenario metrics",
+      "kind": "metrics_scope",
+      "inputs": [],
+      "params": {}
+    },
+    {
+      "origin_id": "n_7c8ec1",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 790,
+        "y": 60
+      },
+      "id": "B7",
+      "name": "Antenna gains",
+      "kind": "antenna",
+      "inputs": [
+        "B3"
+      ],
+      "params": {
+        "tx_type": "yagi",
+        "rx_type": "dipole",
+        "tx_gain_dbi": 12.15,
+        "rx_gain_dbi": 2.15,
+        "polarization_loss_db": 0
+      }
+    },
+    {
+      "origin_id": "n_6356c9",
+      "schedule_owned": false,
+      "enabled": true,
+      "position": {
+        "x": 1048,
+        "y": 74
+      },
+      "id": "B8",
+      "name": "Channel effects",
+      "kind": "channel",
+      "inputs": [
+        "B7"
+      ],
+      "params": {
+        "attenuation_db": 6,
+        "fading_depth_db": 3,
+        "fading_period_frames": 30,
+        "added_noise_dbm": -100
+      }
+    }
+  ],
+  "output": "B5"
+}
