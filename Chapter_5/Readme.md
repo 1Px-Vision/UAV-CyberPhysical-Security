@@ -19,7 +19,7 @@ Illustrated workflow. The workflow image below provides the configuration view u
 ![AeroResilience RF and packet-replay assessment](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Chapter_5/AeroResilience%20RF%20and%20packet-replay%20assessment.jpg)
 AeroResilience workflow view for simultaneous modeled RF disturbance and synthetic packet replay. The RF branch represents pulsed and tone interference, while the separate packet branch supports inspection of the packet source and replay configuration.
 
-**Hint:** A packet may be received successfully yet be stale or duplicated. Conversely, RF impairment may cause a legitimate fresh packet to be lost. A communication-quality metric alone cannot distinguish these cases. A five-frame age is not a physical time delay until the frame duration and timing convention are established.
+>Hint: A packet may be received successfully yet be stale or duplicated. Conversely, RF impairment may cause a legitimate fresh packet to be lost. A communication-quality metric alone cannot distinguish these cases. A five-frame age is not a physical time delay until the frame duration and timing convention are established.
 
 **Worked solution RF availability:** Create an RF assessment record containing the exposure interval, pulsed and tone settings, and reported link-performance indicators. Compare the disturbed case with a matched baseline where supported. Identify whether displayed PDR is an expected model output or a measured packet-count ratio, and document whether replay-generated packets influence any reported counters. Interpret degradation as a modeled availability effect without treating it as evidence of failed authentication.
 
@@ -56,7 +56,7 @@ Implementation checklist:
 
 ## Practical Example: Evidence-Based Red and Purple Team Evaluation
 
-References to named relations below refer to equations in the full chapter that were not included in the supplied excerpt. The exercise retains the numerical equations supplied. This exercise applies the RF-intelligence, red-team coverage, defensive-effectiveness, and reporting equations developed in this chapter. An initial red-team assessment identifies gaps; a purple-team cycle connects those gaps to blue-team improvements and independent retesting. Disturbance generation, alarm production, controller response, and mission outcome remain separate evidence items.
+References to named relations below refer to equations in the full chapter that were not included in the supplied excerpt. The exercise retains the supplied numerical equations. This exercise applies the RF-intelligence, red-team coverage, defensive-effectiveness, and reporting equations developed in this chapter. An initial red-team assessment identifies gaps; a purple-team cycle connects those gaps to blue-team improvements and independent retesting. Disturbance generation, alarm production, controller response, and mission outcome remain separate evidence items.
 
 ### Practical Exercise 5.2: Red-Team Assessment and Purple-Team Improvement
 **Objective:** Evaluate a simulated UAV monitoring and response architecture using traceable RF observations, coverage matrices, response deadlines, recovery evidence, and before/after defensive measurements.
