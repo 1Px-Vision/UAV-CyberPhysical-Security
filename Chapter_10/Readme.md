@@ -33,28 +33,30 @@ Illustrated disturbance schedule. Figure 1 shows the recovery scenario and its e
 ![Figure 1: Disturbance schedule](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Chapter_10/Disturbance%20schedule.jpg)
 
 Proposed AeroResilience recovery-scenario view showing scheduled noise exposure and the link-performance observation path. Before-, during-, and after-exposure labels require verification of timer boundaries and actual interference activity.
-Hint. Distinguish between disturbance onset, detector alarm, escalation decision, controller command, confirmed controller state, exposure cessation, and accepted recovery. These events may occur at different times. A command log alone is not confirmation that the flight controller has entered the requested mode.
-Worked solution: mission-assurance procedure.
-Baseline and readiness. Establish the pre-exposure performance record and verify that required observations are valid. Record the mission requirement and any conditions that prevent a meaningful assessment.
-Disturbance detection. Apply the declared detection rule to the observed outputs. Retain the first qualifying alarm and its supporting observation window. Noise being scheduled is reference evidence, not a detector decision itself.
-Escalation. Specify when degradation persists long enough or becomes severe enough to require operator review or a predefined controller response. Assign the responsible operator and document the applicable procedure and approval boundary.
-Transition confirmation. Where a controller is evaluated, record the command or trigger, acknowledgment where available, and independently reported controller state. Otherwise, mark the flight-mode transition as not evaluated.
-Recovery verification. After actual exposure ends, require a valid, sufficiently sustained performance interval that meets the predefined recovery criterion. Check controller state and other mission prerequisites separately where those functions are in scope.
+
+>Hint: Distinguish between disturbance onset, detector alarm, escalation decision, controller command, confirmed controller state, exposure cessation, and accepted recovery. These events may occur at different times. A command log alone is not confirmation that the flight controller has entered the requested mode.
+
+**Worked solution mission-assurance procedure**
+* Baseline and readiness: Establish the pre-exposure performance record and verify that required observations are valid. Record the mission requirement and any conditions that prevent a meaningful assessment.
+* Disturbance detection: Apply the declared detection rule to the observed outputs. Retain the first qualifying alarm and its supporting observation window. Noise being scheduled is reference evidence, not a detector decision itself.
+* Escalation: Specify when degradation persists long enough or becomes severe enough to require operator review or a predefined controller response. Assign the responsible operator and document the applicable procedure and approval boundary.
+* Transition confirmation: Where a controller is evaluated, record the command or trigger, acknowledgment where available, and independently reported controller state. Otherwise, mark the flight-mode transition as not evaluated.
+* Recovery verification: After actual exposure ends, require a valid, sufficiently sustained performance interval that meets the predefined recovery criterion. Check controller state and other mission prerequisites separately where those functions are in scope.
 Post-event review. Reconstruct the timeline, document acceptance or non-acceptance, identify unresolved evidence gaps, and assign corrective actions and review responsibilities.
-Worked solution: recovery acceptance. A possible communication criterion requires the selected performance statistic to remain above a justified threshold $P_{\mathrm{rec}}$ for $M$ consecutive valid observations. This is a proposed rule, not a function claimed for the JSON. Define the observation cadence, whether windows overlap, the minimum valid-data coverage, and how missing data resets or suspends the assessment. If expected PDR is used, identify recovery as simulation-based rather than experimentally demonstrated packet delivery.
+
+**Worked solution recovery acceptance:** A possible communication criterion requires the selected performance statistic to remain above a justified threshold $P_{\mathrm{rec}}$ for $M$ consecutive valid observations. This is a proposed rule, not a function claimed for the JSON. Define the observation cadence, whether windows overlap, the minimum valid-data coverage, and how missing data resets or suspends the assessment. If expected PDR is used, identify recovery as simulation-based rather than experimentally demonstrated packet delivery.
 Define the recovery time using actual exposure cessation $t_{\mathrm{off}}$ and the instant when the full recovery rule is first satisfied:
 
 $$
 T_{\mathrm{rec}}=t_{\mathrm{accepted}}-t_{\mathrm{off}}.
 $$
 
-State whether timing is expressed in frames or seconds. If the criterion was already satisfied at exposure cessation and remains satisfied for the required confirmation interval, record that behavior without claiming an observed outage. If recovery is not accepted before the observation ends or the next exposure begins, report it as not demonstrated within the available window rather than assigning an arbitrary recovery time.
-Compare pre-exposure, exposure, and post-exposure statistics, and retain transient effects. A short improvement after cessation is insufficient when the declared rule requires persistence. Link recovery alone does not authorize mission resumption; the responsible authority must review all applicable mission conditions.
+State whether timing is expressed in frames or seconds. If the criterion was already satisfied at exposure cessation and remains satisfied for the required confirmation interval, record that behavior without claiming an observed outage. If recovery is not accepted before the observation ends or the next exposure begins, report it as not demonstrated within the available window rather than assigning an arbitrary recovery time. Compare pre-exposure, exposure, and post-exposure statistics, and retain transient effects. A short improvement after cessation is insufficient when the declared rule requires persistence. Link recovery alone does not authorize mission resumption; the responsible authority must review all applicable mission conditions.
 Illustrated recovery evidence. Figure 2 shows the observations used to verify recovery and, where available, distinguishes them from controller-transition evidence.
 
 ![Figure 2: Recovery evidence](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Chapter_10/Recovery%20evidence.jpg)
 
-Proposed observation view for disturbance and recovery assessment. Link-performance records support communication-recovery analysis; a failsafe label alone does not establish a flight-controller transition, which requires separate controller-model or telemetry evidence.
+Proposed observation view for disturbance and recovery assessment. Link performance records to support communication-recovery analysis; a failsafe label alone does not establish a flight-controller transition, which requires separate controller-model or telemetry evidence.
 Evidence and operator responsibilities. Retain configuration references, actual exposure activity, alarms, escalation decisions, controller evidence where available, recovery observations, and acceptance records using aligned time or frame references. Identify the scenario operator, monitoring reviewer, controller or telemetry custodian, and authority responsible for recovery acceptance or mission resumption. Document who preserves evidence, reviews anomalies, and closes corrective actions. If a required role or evidence source is absent, record the resulting assessment limitation.
 Implementation checklist:
 
@@ -67,12 +69,15 @@ Implementation checklist:
 - [ ] Document operator responsibilities, evidence provenance, and corrective-action ownership.
 - [ ] Expected deliverable. A mission-assurance procedure defining disturbance detection, escalation, recovery acceptance, and post-event review, supported by before-, during-, and after-exposure records. Any flight-controller transition must be supported by separate controller-model or telemetry evidence, or explicitly reported as not evaluated.
 
-### Practical Example: Component Failures and Supply-Chain Investigation
+## Practical Example: Component Failures and Supply-Chain Investigation
 
 Reliability monitoring can reveal a change in component performance that warrants a supply-chain investigation. Increased failures do not by themselves establish deliberate compromise. This exercise combines synthetic failure statistics with procurement, manufacturing, maintenance, and configuration evidence to distinguish an observed reliability problem from a supported supply-chain attack hypothesis.
-**Practical Exercise 10.2:** Rising Component Failure Rates and Suspected Supply-Chain Compromise
-Objective. Analyze a change in drone-component failure rates, estimate a reliability indicator under explicit assumptions, and design an evidence-based investigation of a potentially compromised replacement-parts batch.
-Terminology. This exercise interprets “MTF” as mean time to failure, conventionally abbreviated MTTF. Increasing failure frequency generally corresponds to decreasing MTTF under comparable conditions. Distinguish MTTF for a non-repaired component lifetime from mean time between failures (MTBF) for a repairable system. Do not label an increased failure rate as an increased MTTF.
+
+### Practical Exercise 10.2: Rising Component Failure Rates and Suspected Supply-Chain Compromise
+
+**Objective:** Analyze a change in drone-component failure rates, estimate a reliability indicator under explicit assumptions, and design an evidence-based investigation of a potentially compromised replacement-parts batch.
+
+**Terminology:** This exercise interprets “MTF” as mean time to failure, conventionally abbreviated MTTF. Increasing failure frequency generally corresponds to decreasing MTTF under comparable conditions. Distinguish MTTF for a non-repaired component lifetime from mean time between failures (MTBF) for a repairable system. Do not label an increased failure rate as an increased MTTF.
 Worked situation. An operator introduces replacement electronic speed controller (ESC) modules from a new supply batch. During subsequent operations, a larger proportion of module failures is observed. Students must assess the statistical change and determine what evidence would distinguish ordinary quality defects, altered operating conditions, counterfeit parts, unauthorized firmware, or deliberate tampering.
 Use the synthetic dataset below. Exposure is the sum of observed component operating hours at risk. Count each module’s first defined failure only; stop its exposure at failure or at the end of observation. Treat each replacement as a new identified component, not a continuation of the failed component’s lifetime. Assume the stated dataset is complete for the classroom calculation; assess that assumption during the investigation.
 Synthetic component statistics.
@@ -87,14 +92,15 @@ New batch, pooled	15,000	30	2.00
 </div>
 
 The pooled row summarizes A–C; it is not an additional independent cohort. The ordered subgroup rates illustrate an increasing descriptive pattern, not proof of a temporal trend or a single component’s increasing hazard. Establish whether subgroups correspond to time, use conditions, or sampling differences before making that claim.
-Practical procedure.
+
+**Practical procedure**
 Define failure consistently, including diagnostic criteria, component identity, and how you treat suspected versus confirmed failures.
 Compute failures per operating hour for each cohort and the pooled new batch. Compare matched component types and record exposure coverage.
-Estimate the inverse failure-rate reliability indicator under the stated constant-hazard model. Explain why it is not a directly observed average lifetime.
-Quantify uncertainty and compare operating conditions, component age, mission load, temperature, maintenance, and firmware versions before interpreting batch differences.
+Estimate the inverse failure-rate reliability indicator under the stated constant-hazard model. Explain why it is not a directly observed average lifetime. Quantify uncertainty and compare operating conditions, component age, mission load, temperature, maintenance, and firmware versions before interpreting batch differences.
 Build competing explanations and identify provenance, physical-inspection, and firmware evidence needed to evaluate each one.
 Propose containment, verification, and return-to-service criteria with assigned responsibilities and retained evidence.
-Hint. Raw failure counts are not comparable when exposure differs. A lot with more failures may simply have more operating hours. Likewise, premature observation termination, missing failed parts, or inconsistent failure definitions can bias the estimated rates. Track components that have not failed as censored observations rather than discarding them.
+
+>Hint: Raw failure counts are not comparable when exposure differs. A lot with more failures may simply have more operating hours. Likewise, premature observation termination, missing failed parts, or inconsistent failure definitions can bias the estimated rates. Track components that have not failed as censored observations rather than discarding them.
 Worked solution: failure-rate estimates. For $r$ observed first failures over total exposure $T$, estimate an exposure-normalized rate by
 
 $$
@@ -128,18 +134,15 @@ $$
 $$
 
 Thus the reference estimate is 4,000 h and the pooled new-batch estimate is 500 h. The corresponding subgroup estimates for A, B, and C are 1,000, 500, and approximately 333 h. These values demonstrate decreasing model-based MTTF as estimated failure rate increases.
-Do not interpret these estimates as directly measured mean lifetimes, guaranteed endurance, or verified wear-out behavior. Pooling heterogeneous subgroups imposes an additional common-rate approximation. If hazard varies with component age or conditions, retain individual lifetime and censoring records and fit a justified survival model instead. A subgroup trend cannot substitute for component-level time-to-event analysis.
-Uncertainty and comparability. Use appropriate confidence intervals for the failure rates and their ratio, and state the statistical model and method. Under a simple event-count model, low counts imply substantial uncertainty; the reference cohort contains only five failures. If counts are clustered by aircraft, operator, production lot, or mission, account for that dependence rather than treating every event as independent.
-If individual lifetime observations are available, inspect survival estimates and test the constant-hazard assumption. Adjust or stratify comparisons for important differences in age, temperature, electrical loading, vibration, mission profile, maintenance, and failure ascertainment. Separate descriptive evidence of elevated failures from causal attribution. Do not infer fleet-wide risk or a formal trend from this small illustrative table alone.
-Worked solution: supply-chain hypotheses and evidence.
-Ordinary quality defect: compare manufacturing records, material and assembly inspection, acceptance tests, and failure analysis across affected and unaffected modules.
-Operational overstress: examine temperature, voltage/current, mechanical loading, installation, cooling, and maintenance records using comparable missions.
-Counterfeit or substituted parts: trace serial and lot identifiers, procurement and custody records, distributor confirmation, and physical characteristics against trusted reference samples.
+Do not interpret these estimates as directly measured mean lifetimes, guaranteed endurance, or verified wear-out behavior. Pooling heterogeneous subgroups imposes an additional common-rate approximation. If hazard varies with component age or conditions, retain individual lifetime and censoring records and fit a justified survival model instead. A subgroup trend cannot substitute for component-level time-to-event analysis. Uncertainty and comparability. Use appropriate confidence intervals for the failure rates and their ratio, and state the statistical model and method. Under a simple event-count model, low counts imply substantial uncertainty; the reference cohort contains only five failures. If counts are clustered by aircraft, operator, production lot, or mission, account for that dependence rather than treating every event as independent. If individual lifetime observations are available, inspect survival estimates and test the constant-hazard assumption. Adjust or stratify comparisons for important differences in age, temperature, electrical loading, vibration, mission profile, maintenance, and failure ascertainment. Separate descriptive evidence of elevated failures from causal attribution. Do not infer fleet-wide risk or a formal trend from this small illustrative table alone.
+* **Worked solution:** supply-chain hypotheses and evidence.
+* Ordinary quality defect: compare manufacturing records, material and assembly inspection, acceptance tests, and failure analysis across affected and unaffected modules.
+* **Operational overstress:** examine temperature, voltage/current, mechanical loading, installation, cooling, and maintenance records using comparable missions.
+* **Counterfeit or substituted parts:** trace serial and lot identifiers, procurement and custody records, distributor confirmation, and physical characteristics against trusted reference samples.
 Unauthorized firmware or configuration: preserve installed images and settings; compare version, digest, and signature-verification results where implemented; update records; and compare against approved reference artifacts.
-Deliberate tampering: identify verified unauthorized modifications and their connection to the observed failures. Additional attribution evidence is required before alleging malicious intent or identifying an actor.
+* **Deliberate tampering:** identify verified unauthorized modifications and their connection to the observed failures. Additional attribution evidence is required before alleging malicious intent or identifying an actor.
 An unexpected digest or physical discrepancy warrants investigation but may also reflect authorized revisions or record errors. Verify those alternatives. Do not install suspect firmware or modified components in an operational aircraft to reproduce the problem; use an appropriately instrumented, isolated bench or emulator for controlled diagnosis.
-Containment and accountability. Assign the maintenance authority to assess affected inventory and aircraft, the evidence custodian to preserve failed parts and digital artifacts, the procurement owner to obtain provenance records, and the technical reviewer to approve the investigation findings. Define the scope of any precautionary inventory hold or maintenance action through the responsible authority’s procedures.
-Record failure criteria, exposure estimates, analysis revisions, physical and firmware findings, uncertainty, and the basis for any supplier-related conclusion. Specify corrective-action verification and return-to-service evidence separately from the statistical alarm. A safer replacement batch or a lower observed failure rate does not, by itself, establish that the original cause was a cyberattack.
+Containment and accountability. Assign the maintenance authority to assess affected inventory and aircraft, the evidence custodian to preserve failed parts and digital artifacts, the procurement owner to obtain provenance records, and the technical reviewer to approve the investigation findings. Define the scope of any precautionary inventory hold or maintenance action through the responsible authority’s procedures. Record failure criteria, exposure estimates, analysis revisions, physical and firmware findings, uncertainty, and the basis for any supplier-related conclusion. Specify corrective-action verification and return-to-service evidence separately from the statistical alarm. A safer replacement batch or a lower observed failure rate does not, by itself, establish that the original cause was a cyberattack.
 Implementation checklist:
 
 - [ ] Define failure, first-failure counting, exposure, and censoring consistently.
@@ -245,8 +248,7 @@ $$
 $$
 
 Report baseline, ramp, full-bias, and post-bias intervals separately. An optional classroom criterion is detection within 6 frames of onset and a maximum gated error below 3 m during exposure. These illustrative thresholds require mission-specific justification and must be fixed before testing. Do not claim they pass until you verify them through observations.
-Run three comparisons: zero bias; spoofing with `gate_enabled=0`; and spoofing with `gate_enabled=1`. Disabling the entire gate block suppresses the branch and is not the intended ungated comparison. Record baseline false-alarm counts and denominator, alarm frame, peak errors, RMSE, and any failed criterion. Repeat over distinct source seeds to evaluate variability; repeating the same seed checks repeatability only.
-Interpretation and limits. An innovation alarm establishes disagreement between observations under the stated model. Benign reference drift, sensor faults, multipath-related positioning error, or synchronization problems may also cause disagreement. Distinguish anomaly detection from spoofing attribution and assess reference independence and integrity.
+Run three comparisons: zero bias; spoofing with `gate_enabled=0`; and spoofing with `gate_enabled=1`. Disabling the entire gate block suppresses the branch and is not the intended ungated comparison. Record baseline false-alarm counts and denominator, alarm frame, peak errors, RMSE, and any failed criterion. Repeat over distinct source seeds to evaluate variability; repeating the same seed checks repeatability only. Interpretation and limits. An innovation alarm establishes disagreement between observations under the stated model. Benign reference drift, sensor faults, multipath-related positioning error, or synchronization problems may also cause disagreement. Distinguish anomaly detection from spoofing attribution and assess reference independence and integrity.
 G7 is a raw observation scope, not a detector. G5 shows configured power references, not measured GNSS RF power. Position consistency, carrier metadata, or low fused error does not prove signal authenticity. The exercise does not model satellite pseudoranges, receiver acquisition/tracking, packet delivery, physical flight dynamics, or executed autopilot recovery. Bias removal at frame 75 is a model reset, not verified receiver reacquisition.
 Implementation checklist:
   
