@@ -6,7 +6,7 @@ To evaluate communication resilience, set up a controlled testbed with communica
 Practical Example: Reproducible Interference Comparison and Laboratory Mapping
 Reproducible interference assessment requires consistent timing, documented observation points, and a clear separation between simulated behavior and measured hardware results. This exercise compares a structured multi-tone exposure with a mixed RF disturbance and develops a conceptual laboratory architecture for subsequent validation.
 
-**Practical Exercise 11.1:** Multi-Tone and Mixed-Disturbance Comparison
+### Practical Exercise 11.1: Multi-Tone and Mixed-Disturbance Comparison
 Objective. Resolve a scenario-label inconsistency, compare two interference configurations under documented conditions, and map the simulation functions to a prospective controlled laboratory setup.
 Worked situation. Load `Multi_Tone_Barrage_Attack_2400MHz.json` to examine a configured eight-tone interference model passing through RF-link, antenna, channel, and scope blocks. The supplied description identifies timer parameters with a start value of 5 and a duration of 75, even though a block label refers to frames 10–69. Use the timer parameters as the configuration timing reference, then verify their interpretation and actual generated activity in the implementation.
 Compare this structured disturbance with the mixed barrage, noise, and tone configuration in `RF_DoS_Resilience_2400MHz.json`. Verify both loaded configurations rather than treating their filenames or block labels as complete technical specifications.
