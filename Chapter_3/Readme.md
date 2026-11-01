@@ -34,8 +34,8 @@ This value describes the stated configuration before any additional model effect
 
 $$
 \mathrm{(J/S)_i\,{\mathrm{dB}}}
-= J_{\mathrm{RX},i}\,[\mathrm{dBm}]
-- S_{\mathrm{RX}}\,[\mathrm{dBm}].
+= J_{\mathrm{RX},i}\,{\mathrm{dBm}}
+- S_{\mathrm{RX}}\,{\mathrm{dBm}}.
 $$
 
 Compare each interval’s reported performance with the predefined acceptance criterion. A result is inconclusive when the required output, timing alignment, or configuration evidence is missing. Do not substitute assumed values for missing observations. If performance is rejected, document the requirement violation and the proposed corrective action; if accepted, document the remaining limitations and residual risk.
