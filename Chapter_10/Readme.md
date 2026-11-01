@@ -52,7 +52,7 @@ State whether timing is expressed in frames or seconds. If the criterion was alr
 Compare pre-exposure, exposure, and post-exposure statistics, and retain transient effects. A short improvement after cessation is insufficient when the declared rule requires persistence. Link recovery alone does not authorize mission resumption; the responsible authority must review all applicable mission conditions.
 Illustrated recovery evidence. Figure 2 shows the observations used to verify recovery and, where available, distinguishes them from controller-transition evidence.
 
-![Figure 2: Recovery evidence](chapters/Chapter_10/figures/Practical_p2_ch_10.jpg)
+![Figure 2: Recovery evidence](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Chapter_10/Recovery%20evidence.jpg)
 
 Proposed observation view for disturbance and recovery assessment. Link-performance records support communication-recovery analysis; a failsafe label alone does not establish a flight-controller transition, which requires separate controller-model or telemetry evidence.
 Evidence and operator responsibilities. Retain configuration references, actual exposure activity, alarms, escalation decisions, controller evidence where available, recovery observations, and acceptance records using aligned time or frame references. Identify the scenario operator, monitoring reviewer, controller or telemetry custodian, and authority responsible for recovery acceptance or mission resumption. Document who preserves evidence, reviews anomalies, and closes corrective actions. If a required role or evidence source is absent, record the resulting assessment limitation.
