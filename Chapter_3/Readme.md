@@ -30,15 +30,7 @@ $$
 = -70 - (-100) = 30,\mathrm{dB}.
 $$
 
-This value describes the stated configuration before any additional model effects; it must not replace the simulator’s reported SNR unless you check the model definitions. Similarly, where $J_{\mathrm{RX},i}$ is the received interference power in dBm at the same reference point as the desired signal,
-
-$$
-\mathrm{(J/S)_i\,{\mathrm{dB}}}
-= J_{\mathrm{RX},i}\,{\mathrm{dBm}}
-- S_{\mathrm{RX}}\,{\mathrm{dBm}}.
-$$
-
-Compare each interval’s reported performance with the predefined acceptance criterion. A result is inconclusive when the required output, timing alignment, or configuration evidence is missing. Do not substitute assumed values for missing observations. If performance is rejected, document the requirement violation and the proposed corrective action; if accepted, document the remaining limitations and residual risk.
+This value describes the stated configuration before any additional model effects; it must not replace the simulator’s reported SNR unless you check the model definitions. Similarly, where $J_{\mathrm{RX},i}$ is the received interference power in dBm at the same reference point as the desired signal. Compare each interval’s reported performance with the predefined acceptance criterion. A result is inconclusive when the required output, timing alignment, or configuration evidence is missing. Do not substitute assumed values for missing observations. If performance is rejected, document the requirement violation and the proposed corrective action; if accepted, document the remaining limitations and residual risk.
 The output image below provides the output view used to associate reported performance with exposure intervals.
 ![AeroResilience communication-availability assessment](https://github.com/1Px-Vision/UAV-CyberPhysical-Security/blob/main/Chapter_3/AeroResilience%20communication-availability%20assessment_Signals.jpg)
 AeroResilience output view supporting comparison of reported link performance with predefined acceptance criteria. Each result includes an exposure interval, its test configuration, and retained simulation evidence.
