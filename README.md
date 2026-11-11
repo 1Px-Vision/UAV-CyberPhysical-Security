@@ -186,11 +186,12 @@ The book also explores future directions in UAV cyber–physical security, inclu
 If you use materials from this repository, please cite the book project as:
 
 ```bibtex
-@book{osorio2026uavsecurity,
-  title     = {Cyber--Physical Security and Mission Assurance for Unmanned Aerial Vehicles},
-  author    = {Osorio Quero, Carlos Alexander},
-  year      = {2026},
-  note      = {Book project}
+@book{osorioquero_uas_forthcoming,
+  author    = {Osorio-Quero, C. A. and Martinez-Carranza, J.},
+  title     = {Cyber-Physical Security and Mission Assurance for Unmanned Aerial Systems},
+  publisher = {CRC Press},
+  isbn      = {9781041557050},
+  note      = {Forthcoming}
 }
 ```
 
