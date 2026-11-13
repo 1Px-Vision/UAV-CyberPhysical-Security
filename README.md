@@ -223,5 +223,8 @@ The content of this repository is intended for academic and research purposes. P
 
 **Dr. Carlos Alexander Osorio Quero**
 Postdoctoral Researcher, INAOE, Mexico
-Associate Researcher, The Abdus Salam International Centre for Theoretical Physics, Italy
+Associate Researcher, The Abdus Salam International Center for Theoretical Physics, Italy
 Research areas: UAV cyber–physical security, embedded systems, autonomous navigation, sensor systems, AI-based security, and mission assurance.
+
+## Feedback
+Corrections and technical feedback are welcome. Please contact the author through his professional profile or an author-approved contact channel.
